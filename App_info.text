@@ -1,0 +1,58 @@
+Variant: debug
+Config: debug
+Store: C:\Users\DELL\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: C4:56:EA:2C:DE:97:FA:DD:3B:9D:41:40:03:97:69:EF
+SHA1: 31:C0:69:A7:8B:91:50:1F:68:9C:86:40:D3:CE:4B:46:8F:BA:9F:C2
+SHA-256: 6D:B8:F2:B7:61:38:A7:DF:16:7B:99:C3:F7:D8:1F:5E:52:6C:8C:AA:70:55:B4:41:2B:11:CF:F7:AB:68:B4:29
+Valid until: Sunday, April 4, 2055
+----------
+Variant: release
+Config: debug
+Store: C:\Users\DELL\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: C4:56:EA:2C:DE:97:FA:DD:3B:9D:41:40:03:97:69:EF
+SHA1: 31:C0:69:A7:8B:91:50:1F:68:9C:86:40:D3:CE:4B:46:8F:BA:9F:C2
+SHA-256: 6D:B8:F2:B7:61:38:A7:DF:16:7B:99:C3:F7:D8:1F:5E:52:6C:8C:AA:70:55:B4:41:2B:11:CF:F7:AB:68:B4:29
+Valid until: Sunday, April 4, 2055
+----------
+Variant: profile
+Config: debug
+Store: C:\Users\DELL\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: C4:56:EA:2C:DE:97:FA:DD:3B:9D:41:40:03:97:69:EF
+SHA1: 31:C0:69:A7:8B:91:50:1F:68:9C:86:40:D3:CE:4B:46:8F:BA:9F:C2
+SHA-256: 6D:B8:F2:B7:61:38:A7:DF:16:7B:99:C3:F7:D8:1F:5E:52:6C:8C:AA:70:55:B4:41:2B:11:CF:F7:AB:68:B4:29
+Valid until: Sunday, April 4, 2055
+----------
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\DELL\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: C4:56:EA:2C:DE:97:FA:DD:3B:9D:41:40:03:97:69:EF
+SHA1: 31:C0:69:A7:8B:91:50:1F:68:9C:86:40:D3:CE:4B:46:8F:BA:9F:C2
+SHA-256: 6D:B8:F2:B7:61:38:A7:DF:16:7B:99:C3:F7:D8:1F:5E:52:6C:8C:AA:70:55:B4:41:2B:11:CF:F7:AB:68:B4:29
+Valid until: Sunday, April 4, 2055
+----------
+
+> Task :google_sign_in_android:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\DELL\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: C4:56:EA:2C:DE:97:FA:DD:3B:9D:41:40:03:97:69:EF
+SHA1: 31:C0:69:A7:8B:91:50:1F:68:9C:86:40:D3:CE:4B:46:8F:BA:9F:C2
+SHA-256: 6D:B8:F2:B7:61:38:A7:DF:16:7B:99:C3:F7:D8:1F:5E:52:6C:8C:AA:70:55:B4:41:2B:11:CF:F7:AB:68:B4:29
+Valid until: Sunday, April 4, 2055
+----------
+
+> Task :shared_preferences_android:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\DELL\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: C4:56:EA:2C:DE:97:FA:DD:3B:9D:41:40:03:97:69:EF
+SHA1: 31:C0:69:A7:8B:91:50:1F:68:9C:86:40:D3:CE:4B:46:8F:BA:9F:C2
+SHA-256: 6D:B8:F2:B7:61:38:A7:DF:16:7B:99:C3:F7:D8:1F:5E:52:6C:8C:AA:70:55:B4:41:2B:11:CF:F7:AB:68:B4:29
+Valid until: Sunday, April 4, 2055
+----------
