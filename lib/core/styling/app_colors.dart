@@ -5,13 +5,20 @@ class AppColors {
   static const Color blueE7F = Color(0xffE7F8FF);
   static const Color blueEFF = Color(0xffEFF6FF);
   static const Color blue0A9 = Color(0xff0A95CC);
+  static const Color blue981 = Color(0xff9810FA);
+  static const Color blueE9D = Color(0xffE9D4FF);
   static const Color blue055 = Color(0xff055473);
   static const Color blue155 = Color(0xff155DFC);
+  static const Color blue4F3 = Color(0xff4F39F6);
+  static const Color blueEEF = Color(0xffEEF2FF);
+  static const Color blueC6D = Color(0xffC6D2FF);
   static const Color blue077 = Color(0xff077099);
   static const Color blue101 = Color(0xff101828);
   static const Color blue1C3 = Color(0xff1C398E);
   static const Color blue008 = Color(0xff0088FF);
   static const Color blue144 = Color(0xff1447E6);
+  static const Color orangeFFD = Color(0xffFFD6A7);
+  static const Color orangeF54 = Color(0xffF54900);
   static const Color blueBED = Color(0xffBEDBFF);
   static const Color blueDBE = Color(0xffDBEAFE);
   static const Color blueDBF = Color(0xffDBF5FF);
@@ -24,11 +31,7 @@ class AppColors {
   static const RadialGradient rGBlue = RadialGradient(
     center: Alignment.topRight,
     radius: 1.5,
-    colors: [
-      Color(0xFF64B5F6), // الأزرق الفاتح
-      Color(0xFFE0E3E7),
-      Colors.white,
-    ],
+    colors: [Color(0xFF64B5F6), Color(0xFFE0E3E7), Colors.white],
   );
 
   static const LinearGradient orangeFFF5 = LinearGradient(
@@ -53,10 +56,13 @@ class AppColors {
   static const Color grey676 = Color(0xff676767);
 
   static const Color redE70 = Color(0xffE7000B);
+  static const Color redFCC = Color(0xffFCCEE8);
+  static const Color redE60 = Color(0xffE60076);
   static const Color red4D2 = Color(0xff4D2600);
 
   static const Color green319 = Color(0xff319F43);
   static const Color green00C = Color(0xff00C950);
+  static const Color green009 = Color(0xff009689);
   static const Color green008 = Color(0xff008236);
   static const Color green004 = Color(0xff00491E);
   static const Color green0D5 = Color(0xff0D542B);

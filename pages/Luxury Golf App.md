@@ -1,0 +1,21 @@
+- #Phase 1
+	- #Feature : - Employee & Admins Authentication
+		- TODO : Admins & Employee Home Screen
+		- TODO :Admins & Employee Model
+		- TODO : See Account Screen
+		- TODO : Create First Admin Account
+		- TODO : Add Admins & Employee Account UI and Login
+		- TODO : Test With Local Storage
+		- TODO : Sign up UI Logic
+		- TODO : #Feature : -  Learning Uploading Photos
+		- TODO : Navigation Bar Login and UI
+- #Phase 2
+	- TODO : Learning APIs with DIO
+	- TODO : Convert Admins & Employee to API not Local Storage
+	-
+- #Phase 3
+	- TODO : Implement APIs in App
+	- TODO : #Feature : - Add New Car Logic
+	-
+-
+-

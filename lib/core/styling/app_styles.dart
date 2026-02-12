@@ -23,6 +23,17 @@ class AppTextStyles {
     fontSize: 20.sp,
   );
 
+  static TextStyle whiteFFFw400s24 = TextStyle(
+    color: AppColors.white,
+    fontWeight: FontWeight.w400,
+    fontSize: 24.sp,
+  );
+  static TextStyle blueE7Fw400s14 = TextStyle(
+    color: AppColors.blueE7F,
+    fontWeight: FontWeight.w400,
+    fontSize: 14.sp,
+  );
+
   static TextStyle grey585w500s10 = TextStyle(
     color: AppColors.grey585,
     fontWeight: FontWeight.w500,

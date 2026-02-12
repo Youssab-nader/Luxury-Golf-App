@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:luxury_golf_app/Admins/Screens/admin_home_screen.dart';
 import 'package:luxury_golf_app/Services/local_storage_service.dart';
 import 'package:luxury_golf_app/Users/Events/Screens/book_event_one_screen.dart';
 import 'package:luxury_golf_app/Users/Events/Screens/events_home_screen.dart';
@@ -21,11 +22,12 @@ class RouterGeneration {
     errorBuilder:
         (context, state) =>
             Scaffold(body: Center(child: Text('Invalide Screen'))),
-    initialLocation: AppRouts.getSrarted,
+    initialLocation: AppRouts.adminsHome,
     redirect: (context, state) async {
       bool loggedIn = await LocalStorageService().isLogin();
       if (loggedIn) {
-        if (state.uri.toString() == AppRouts.login || state.uri.toString() == AppRouts.getSrarted) {
+        if (state.uri.toString() == AppRouts.login ||
+            state.uri.toString() == AppRouts.getSrarted) {
           return AppRouts.homePage;
         } else {
           return null;
@@ -39,6 +41,11 @@ class RouterGeneration {
         name: AppRouts.getSrarted,
         path: AppRouts.getSrarted,
         builder: (context, state) => GetStartedScreen(),
+      ),
+      GoRoute(
+        name: AppRouts.adminsHome,
+        path: AppRouts.adminsHome,
+        builder: (context, state) => AdminsHomeScreen(),
       ),
       GoRoute(
         name: AppRouts.login,
