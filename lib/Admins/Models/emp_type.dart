@@ -1,0 +1,4 @@
+enum EmpType {
+  admin,
+  employee,
+}

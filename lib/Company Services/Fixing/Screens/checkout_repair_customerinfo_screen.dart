@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:luxury_golf_app/Users/Fixing/Widgets/fixig_place_widget.dart';
+import 'package:luxury_golf_app/Company%20Services/Fixing/Widgets/fixig_place_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/small_slider_bar_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
@@ -83,17 +83,17 @@ class _CheckOutRepairCustomerInfoState
                       TextFieldWidget(
                         labelText: 'Full name',
                         hintText: 'Youssab Nander Gamil',
-                        hight: 48,
+                        width: 48,
                       ),
                       TextFieldWidget(
                         labelText: 'Phone number',
                         hintText: '0121234567',
-                        hight: 48,
+                        width: 48,
                       ),
                       TextFieldWidget(
                         labelText: 'Email address',
                         hintText: 'example@gmail.com',
-                        hight: 48,
+                        width: 48,
                       ),
                     ],
                   ),

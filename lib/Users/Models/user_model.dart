@@ -1,22 +1,25 @@
 class User {
   final String name;
   final String email;
+   bool isLogined = false;
   final String? photoURL;
-  final String _passWord;
+  final String passWord;
 
   User({
     required this.name,
     required this.email,
     required this.photoURL,
-    required String passWord,
-  }) : _passWord = passWord;
+    required this. passWord,
+    required this.isLogined,
+  });
 
   Map<String, dynamic> toJson() {
     return {
       'name': name,
       'email': email,
+      'isLodined': isLogined,
       'photoURL': photoURL,
-      'passWord': _passWord,
+      'passWord': passWord,
     };
   }
 
@@ -38,10 +41,11 @@ class User {
 
   // }
 
-   factory User.fromJson(Map<String, dynamic> json) {
+  factory User.fromJson(Map<String, dynamic> json) {
     return User(
       name: json['name'],
       email: json['email'],
+      isLogined: json['isLogined'],
       photoURL: json['photoURL'],
       passWord: json['passWord'],
     );

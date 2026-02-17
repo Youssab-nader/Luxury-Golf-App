@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:luxury_golf_app/Admins/Screens/add_new_emp.dart';
 import 'package:luxury_golf_app/Admins/Screens/admin_home_screen.dart';
-import 'package:luxury_golf_app/Services/local_storage_service.dart';
-import 'package:luxury_golf_app/Users/Events/Screens/book_event_one_screen.dart';
-import 'package:luxury_golf_app/Users/Events/Screens/events_home_screen.dart';
-import 'package:luxury_golf_app/Users/Fixing/Screens/checkout_repair_confirm_screen.dart';
-import 'package:luxury_golf_app/Users/Fixing/Screens/checkout_repair_customerinfo_screen.dart';
-import 'package:luxury_golf_app/Users/Fixing/Screens/checkout_repair_details_screen.dart';
-import 'package:luxury_golf_app/Users/Fixing/Screens/fix_history_service_screen.dart';
-import 'package:luxury_golf_app/Users/Fixing/Screens/fix_pinding_service_screen.dart';
-import 'package:luxury_golf_app/Users/Fixing/Screens/fix_home_screen.dart';
-import 'package:luxury_golf_app/Users/Garage/Screens/garage_home_screen.dart';
-import 'package:luxury_golf_app/Users/Rent/Screens/rent_home_screen.dart';
+import 'package:luxury_golf_app/Admins/Screens/see_accounts_screen.dart';
+import 'package:luxury_golf_app/Company%20Services/Events/Screens/book_event_one_screen.dart';
+import 'package:luxury_golf_app/Company%20Services/Events/Screens/events_home_screen.dart';
+import 'package:luxury_golf_app/Company%20Services/Fixing/Screens/checkout_repair_confirm_screen.dart';
+import 'package:luxury_golf_app/Company%20Services/Fixing/Screens/checkout_repair_customerinfo_screen.dart';
+import 'package:luxury_golf_app/Company%20Services/Fixing/Screens/checkout_repair_details_screen.dart';
+import 'package:luxury_golf_app/Company%20Services/Fixing/Screens/fix_history_service_screen.dart';
+import 'package:luxury_golf_app/Company%20Services/Fixing/Screens/fix_pinding_service_screen.dart';
+import 'package:luxury_golf_app/Company%20Services/Fixing/Screens/fix_home_screen.dart';
+import 'package:luxury_golf_app/Company%20Services/Garage/Screens/garage_home_screen.dart';
+import 'package:luxury_golf_app/Company%20Services/Rent/Screens/rent_home_screen.dart';
 import 'package:luxury_golf_app/Users/Screens/get_started_screen.dart';
 import 'package:luxury_golf_app/Users/Screens/home_screen.dart';
 import 'package:luxury_golf_app/Users/Screens/login_screen.dart';
+import 'package:luxury_golf_app/Users/Screens/sign_up_screen.dart';
 import 'package:luxury_golf_app/core/routing/app_routs.dart';
 
 class RouterGeneration {
@@ -22,25 +24,25 @@ class RouterGeneration {
     errorBuilder:
         (context, state) =>
             Scaffold(body: Center(child: Text('Invalide Screen'))),
-    initialLocation: AppRouts.adminsHome,
-    redirect: (context, state) async {
-      bool loggedIn = await LocalStorageService().isLogin();
-      if (loggedIn) {
-        if (state.uri.toString() == AppRouts.login ||
-            state.uri.toString() == AppRouts.getSrarted) {
-          return AppRouts.homePage;
-        } else {
-          return null;
-        }
-      } else {
-        return null;
-      }
+    initialLocation: AppRouts.addNewEmp,
+    redirect: (context, state) {
+      return null;
     },
     routes: [
       GoRoute(
         name: AppRouts.getSrarted,
         path: AppRouts.getSrarted,
         builder: (context, state) => GetStartedScreen(),
+      ),
+      GoRoute(
+        name: AppRouts.signUp,
+        path: AppRouts.signUp,
+        builder: (context, state) => SignUpScreen(),
+      ),
+      GoRoute(
+        name: AppRouts.addNewEmp,
+        path: AppRouts.addNewEmp,
+        builder: (context, state) => AddNewEmppScreen(),
       ),
       GoRoute(
         name: AppRouts.adminsHome,
@@ -71,6 +73,11 @@ class RouterGeneration {
         name: AppRouts.garage,
         path: AppRouts.garage,
         builder: (context, state) => GarageScreen(),
+      ),
+      GoRoute(
+        name: AppRouts.seeEmpAccounts,
+        path: AppRouts.seeEmpAccounts,
+        builder: (context, state) => SeeAccountsScreen(),
       ),
       GoRoute(
         name: AppRouts.events,

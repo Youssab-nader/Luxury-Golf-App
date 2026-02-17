@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:luxury_golf_app/Services/google_sign_in.dart';
+import 'package:luxury_golf_app/App%20Services/google_sign_in.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/text_field_widget.dart';
 import 'package:luxury_golf_app/core/routing/app_routs.dart';
 import 'package:luxury_golf_app/core/styling/app_colors.dart';
+import 'package:luxury_golf_app/core/styling/app_styles.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -65,17 +66,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   children: [
                     TextFieldWidget(
-                      hight: 48.h,
                       labelText: 'Email',
                       hintText: 'user@email.com',
                     ),
                     HightSpacing(hight: 16),
                     TextFieldWidget(
-                      hight: 48.h,
+                      isPassword: true,
                       labelText: 'Password',
                       hintText: '*********',
                     ),
-                    HightSpacing(hight: 45),
+                    Align(
+                      alignment: AlignmentGeometry.centerRight,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Forget Password ?',
+                          style: AppTextStyles.hyperTextStyle,
+                        ),
+                      ),
+                    ),
+                    HightSpacing(hight: 30),
                     ButtomWidget(
                       text: 'Login',
                       buttomWidth: 343.w,
@@ -116,7 +126,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         final bool succes = await signIn.signIn();
                         if (succes) {
                           context.pushReplacementNamed(AppRouts.homePage);
-                          
                         }
                       },
                       buttomhight: 48.h,
@@ -136,7 +145,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.pushReplacementNamed(AppRouts.signUp);
+                          },
                           child: Text(
                             'Sign up',
                             style: TextStyle(

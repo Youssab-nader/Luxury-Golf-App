@@ -11,6 +11,7 @@ class ClickableCardWidget extends StatelessWidget {
   final Color bordersColor;
   final Color containerColor;
   final Color iconColor;
+  final Widget? suffixWidget;
   final VoidCallback onPress;
 
   const ClickableCardWidget({
@@ -22,6 +23,7 @@ class ClickableCardWidget extends StatelessWidget {
     required this.containerColor,
     required this.iconColor,
     required this.onPress,
+    this.suffixWidget,
   });
 
   @override
@@ -29,7 +31,7 @@ class ClickableCardWidget extends StatelessWidget {
     return InkWell(
       onTap: onPress,
       child: Container(
-        padding: EdgeInsets.all(16.8.r),
+        padding: EdgeInsets.all(12.r),
         height: 81.6.h,
         width: 343.w,
         decoration: BoxDecoration(
@@ -54,12 +56,15 @@ class ClickableCardWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(mainText, style: AppTextStyles.blue101w400s16),
-                Text(subTex, style: AppTextStyles.grey4A5w400s14),
+                Text(
+                  subTex,
+                  style: AppTextStyles.grey4A5w400s14.copyWith(fontSize: 12.sp),
+                ),
               ],
             ),
             Spacer(),
-            Icon(Icons.arrow_forward_ios, color: iconColor, size: 20.r),
-            // SvgPicture.asset('assets/icons/arrow_go_icon.svg'),
+            suffixWidget ??
+                Icon(Icons.arrow_forward_ios, color: iconColor, size: 20.r),
           ],
         ),
       ),

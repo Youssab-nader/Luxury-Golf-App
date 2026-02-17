@@ -122,7 +122,7 @@ class _CheckOutRepairDetailsState extends State<CheckOutRepairDetails> {
                 maxLines: 20,
                 hintText:
                     'Please describe the issue in detail. What symptoms are you experiencing? When did it start?',
-                hight: 90,
+                width: 90,
               ),
               const HightSpacing(hight: 16),
               Text('Add Photos (Optional)', style: AppTextStyles.textLable),

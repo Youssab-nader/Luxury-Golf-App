@@ -95,14 +95,14 @@ class AppTextStyles {
   );
 
   static TextStyle textLable = TextStyle(
-    color: AppColors.black121,
+    color: AppColors.grey8A8,
     fontWeight: FontWeight.w600,
     fontSize: 14.sp,
   );
 
   static TextStyle hyperTextStyle = TextStyle(
-    color: AppColors.hyperTextColor,
-    fontWeight: FontWeight.w300,
+    color: AppColors.blue325,
+    fontWeight: FontWeight.w600,
     fontSize: 14.sp,
   );
 

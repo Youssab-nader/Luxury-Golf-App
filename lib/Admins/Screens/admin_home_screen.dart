@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:luxury_golf_app/core/Widgets/clickable_card.dart';
 import 'package:luxury_golf_app/core/Widgets/data_card.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
+import 'package:luxury_golf_app/core/routing/app_routs.dart';
 import 'package:luxury_golf_app/core/styling/app_colors.dart';
 import 'package:luxury_golf_app/core/styling/app_styles.dart';
 
@@ -93,7 +95,9 @@ class AdminsHomeScreen extends StatelessWidget {
                           bordersColor: AppColors.redFCC,
                           containerColor: AppColors.redFCC,
                           iconColor: AppColors.redE70,
-                          onPress: () {}, //TODO : Add Function
+                          onPress: () {
+                            context.pushNamed(AppRouts.addNewEmp);
+                          }, //TODO : Add Function
                         ),
                         const HightSpacing(hight: 16),
                         ClickableCardWidget(

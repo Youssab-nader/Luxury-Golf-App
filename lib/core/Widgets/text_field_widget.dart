@@ -5,23 +5,35 @@ import 'package:luxury_golf_app/core/styling/app_colors.dart';
 import 'package:luxury_golf_app/core/styling/app_styles.dart';
 
 // ignore: must_be_immutable
-class TextFieldWidget extends StatelessWidget {
+class TextFieldWidget extends StatefulWidget {
   final String labelText;
   final String hintText;
-  final double hight;
-  String? suffixText;
+  final TextEditingController? textController;
+  double? width;
+  String? starIcon;
   int? maxLines;
-  bool? isPassword;
+  bool isPassword;
+  final String? Function(String?)? validationString;
 
   TextFieldWidget({
     super.key,
     required this.labelText,
-    this.isPassword,
+    this.isPassword = false,
     this.maxLines,
     required this.hintText,
-    required this.hight,
+    this.width,
+    this.starIcon,
+    this.validationString,
+    this.textController,
   });
 
+  @override
+  State<TextFieldWidget> createState() => _TextFieldWidgetState();
+}
+
+bool disPass = false;
+
+class _TextFieldWidgetState extends State<TextFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,36 +41,39 @@ class TextFieldWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         const HightSpacing(hight: 3),
-        Text(labelText, style: AppTextStyles.textLable),
+        Row(
+          children: [
+            Text(widget.labelText, style: AppTextStyles.textLable),
+            Text(
+              widget.starIcon ?? '',
+              style: TextStyle(color: Colors.red, fontSize: 15.sp),
+            ),
+          ],
+        ),
         HightSpacing(hight: 5),
         SizedBox(
-          // width: 328.w,
+          width: widget.width?.w ?? 343.w,
           child: TextFormField(
-            validator: (String? value) {
-              // Regular Expresions wil Added
-              if ((labelText.contains('name')) &&
-                  (value == null || value.isEmpty)) {
-                return "Please Enter your name";
-              } else if (labelText.contains('name') &&
-                  (value != null &&
-                      (value.length < 7 || !value.contains(' ')))) {
-                return "Please enter at least your full name (first, middle, and last).";
-              }
-              if ((labelText.contains('Phone')) &&
-                  (value == null || value.isEmpty || value.length != 11)) {
-                return "Please Enter Valid Phone number";
-              }
-              if ((labelText.contains('Email')) &&
-                  (value == null || value.isEmpty)) {
-                return "Please Enter Valid Email";
-                // OTP Verificatin
-              }
-              return null;
-            },
-
-            // maxLines: maxLines ?? 1,
-            obscureText: isPassword ?? false,
+            controller: widget.textController,
+            validator: widget.validationString,
+            maxLines: widget.maxLines ?? 1,
+            obscureText: (widget.isPassword && !disPass),
             decoration: InputDecoration(
+              
+              suffixIcon:
+                  widget.isPassword
+                      ? IconButton(
+                        icon:
+                            disPass
+                                ? Icon(Icons.visibility_sharp)
+                                : Icon(Icons.visibility_off_sharp),
+                        onPressed: () {
+                          setState(() {
+                            disPass = !disPass;
+                          });
+                        },
+                      )
+                      : null,
               errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.red, width: 1.w),
                 borderRadius: BorderRadius.circular(8.r),
@@ -68,7 +83,7 @@ class TextFieldWidget extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: Colors.red,
               ),
-              hintText: hintText,
+              hintText: widget.hintText,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.r),
               ),
