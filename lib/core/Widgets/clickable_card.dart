@@ -12,7 +12,7 @@ class ClickableCardWidget extends StatelessWidget {
   final Color containerColor;
   final Color iconColor;
   final Widget? suffixWidget;
-  final VoidCallback onPress;
+  final VoidCallback? onPress;
 
   const ClickableCardWidget({
     super.key,
@@ -22,7 +22,7 @@ class ClickableCardWidget extends StatelessWidget {
     required this.bordersColor,
     required this.containerColor,
     required this.iconColor,
-    required this.onPress,
+     this.onPress,
     this.suffixWidget,
   });
 

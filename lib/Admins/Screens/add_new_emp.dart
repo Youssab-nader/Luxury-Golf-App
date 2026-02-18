@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:luxury_golf_app/Admins/Models/employee_model.dart';
+import 'package:luxury_golf_app/Admins/Models/permissions_model.dart';
+import 'package:luxury_golf_app/Admins/Widgets/screen_header_widget.dart';
+import 'package:luxury_golf_app/ForTest/all_emp.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/clickable_card.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
@@ -20,6 +24,14 @@ class _AddNewEmppScreenState extends State<AddNewEmppScreen> {
   final TextEditingController _phoneNumController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final List<Permissions> permissions = [];
+  bool addNewCarSwitcher = false;
+  bool seeServReqSwitcher = false;
+  bool interactServReqSwitcher = false;
+  bool seeReportsSwitcher = false;
+  bool createAccountSwitcher = false;
+  bool addSparePartSwitcher = false;
+  bool editWorkHoursSwitcher = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -162,7 +174,7 @@ class _AddNewEmppScreenState extends State<AddNewEmppScreen> {
                 Container(
                   padding: EdgeInsets.all(20.r),
                   width: 343.w,
-                  height: 665.h,
+                  height: 770.h,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16.r),
@@ -202,9 +214,27 @@ class _AddNewEmppScreenState extends State<AddNewEmppScreen> {
                         suffixWidget: Transform.scale(
                           scale: .8,
                           child: Switch(
+                            activeTrackColor: AppColors.grey464,
                             padding: EdgeInsets.zero,
-                            value: false,
-                            onChanged: (value) {},
+                            value: addNewCarSwitcher,
+                            onChanged: (value) {
+                              setState(() {
+                                addNewCarSwitcher = value;
+                              });
+
+                              if (value == true) {
+                                permissions.add(
+                                  Permissions.addAndDeleteCarNewCar,
+                                );
+                              } else if (permissions.contains(
+                                    Permissions.addAndDeleteCarNewCar,
+                                  ) &&
+                                  (value == false)) {
+                                permissions.remove(
+                                  Permissions.addAndDeleteCarNewCar,
+                                );
+                              }
+                            },
                           ),
                         ),
                         onPress: () {},
@@ -212,7 +242,7 @@ class _AddNewEmppScreenState extends State<AddNewEmppScreen> {
                       const HightSpacing(hight: 16),
                       ClickableCardWidget(
                         mainText: 'See Service Requests',
-                        subTex: 'Manage customer requests',
+                        subTex: 'See customer requests',
                         svgPath: 'assets/icons/requests_Icon.svg',
                         bordersColor: AppColors.orangeFFD,
                         containerColor: AppColors.orangeFFD,
@@ -220,12 +250,64 @@ class _AddNewEmppScreenState extends State<AddNewEmppScreen> {
                         suffixWidget: Transform.scale(
                           scale: .8,
                           child: Switch(
+                            activeTrackColor: AppColors.grey464,
                             padding: EdgeInsets.zero,
-                            value: false,
-                            onChanged: (value) {},
+                            value: seeServReqSwitcher,
+                            onChanged: (value) {
+                              setState(() {
+                                seeServReqSwitcher = value;
+                              });
+
+                              if (value == true) {
+                                permissions.add(
+                                  Permissions.seeServicesRequests,
+                                );
+                              } else if (permissions.contains(
+                                    Permissions.seeServicesRequests,
+                                  ) &&
+                                  (value == false)) {
+                                permissions.remove(
+                                  Permissions.seeServicesRequests,
+                                );
+                              }
+                            },
                           ),
                         ),
-                        onPress: () {}, //TODO : Add Function
+                      ),
+                      const HightSpacing(hight: 16),
+                      ClickableCardWidget(
+                        mainText: 'Interact with request ',
+                        subTex: 'Approve / Reject requests',
+                        svgPath: 'assets/icons/Interact_icon.svg',
+                        bordersColor: AppColors.blue981.withValues(alpha: .4),
+                        containerColor: AppColors.blueF2D,
+                        iconColor: AppColors.white,
+                        suffixWidget: Transform.scale(
+                          scale: .8,
+                          child: Switch(
+                            activeTrackColor: AppColors.grey464,
+                            padding: EdgeInsets.zero,
+                            value: interactServReqSwitcher,
+                            onChanged: (value) {
+                              setState(() {
+                                interactServReqSwitcher = value;
+                              });
+
+                              if (value == true) {
+                                permissions.add(
+                                  Permissions.actWithServicesRequests,
+                                );
+                              } else if (permissions.contains(
+                                    Permissions.actWithServicesRequests,
+                                  ) &&
+                                  (value == false)) {
+                                permissions.remove(
+                                  Permissions.actWithServicesRequests,
+                                );
+                              }
+                            },
+                          ),
+                        ),
                       ),
                       const HightSpacing(hight: 16),
                       ClickableCardWidget(
@@ -238,12 +320,29 @@ class _AddNewEmppScreenState extends State<AddNewEmppScreen> {
                         suffixWidget: Transform.scale(
                           scale: .8,
                           child: Switch(
+                            activeTrackColor: AppColors.grey464,
                             padding: EdgeInsets.zero,
-                            value: false,
-                            onChanged: (value) {},
+                            value: createAccountSwitcher,
+                            onChanged: (value) {
+                              setState(() {
+                                createAccountSwitcher = value;
+                              });
+
+                              if (value == true) {
+                                permissions.add(
+                                  Permissions.createAndDeleteAccounts,
+                                );
+                              } else if (permissions.contains(
+                                    Permissions.createAndDeleteAccounts,
+                                  ) &&
+                                  (value == false)) {
+                                permissions.remove(
+                                  Permissions.createAndDeleteAccounts,
+                                );
+                              }
+                            },
                           ),
                         ),
-                        onPress: () {}, //TODO : Add Function
                       ),
                       const HightSpacing(hight: 16),
                       ClickableCardWidget(
@@ -256,12 +355,27 @@ class _AddNewEmppScreenState extends State<AddNewEmppScreen> {
                         suffixWidget: Transform.scale(
                           scale: .8,
                           child: Switch(
+                            activeTrackColor: AppColors.grey464,
                             padding: EdgeInsets.zero,
-                            value: false,
-                            onChanged: (value) {},
+                            value: seeReportsSwitcher,
+                            onChanged: (value) {
+                              setState(() {
+                                seeReportsSwitcher = value;
+                              });
+
+                              if (value == true) {
+                                permissions.add(Permissions.seeServicesReports);
+                              } else if (permissions.contains(
+                                    Permissions.seeServicesReports,
+                                  ) &&
+                                  (value == false)) {
+                                permissions.remove(
+                                  Permissions.seeServicesReports,
+                                );
+                              }
+                            },
                           ),
                         ),
-                        onPress: () {}, //TODO : Add Function
                       ),
                       const HightSpacing(hight: 16),
                       ClickableCardWidget(
@@ -274,12 +388,25 @@ class _AddNewEmppScreenState extends State<AddNewEmppScreen> {
                         suffixWidget: Transform.scale(
                           scale: .8,
                           child: Switch(
+                            activeTrackColor: AppColors.grey464,
                             padding: EdgeInsets.zero,
-                            value: false,
-                            onChanged: (value) {},
+                            value: addSparePartSwitcher,
+                            onChanged: (value) {
+                              setState(() {
+                                addSparePartSwitcher = value;
+                              });
+
+                              if (value == true) {
+                                permissions.add(Permissions.addSpairParts);
+                              } else if (permissions.contains(
+                                    Permissions.addSpairParts,
+                                  ) &&
+                                  (value == false)) {
+                                permissions.remove(Permissions.addSpairParts);
+                              }
+                            },
                           ),
                         ),
-                        onPress: () {}, //TODO : Add Function
                       ),
                       const HightSpacing(hight: 16),
                       ClickableCardWidget(
@@ -292,12 +419,24 @@ class _AddNewEmppScreenState extends State<AddNewEmppScreen> {
                         suffixWidget: Transform.scale(
                           scale: .8,
                           child: Switch(
+                            activeTrackColor: AppColors.grey464,
                             padding: EdgeInsets.zero,
-                            value: false,
-                            onChanged: (value) {},
+                            value: editWorkHoursSwitcher,
+                            onChanged: (value) {
+                              setState(() {
+                                editWorkHoursSwitcher = value;
+                              });
+                              if (value == true) {
+                                permissions.add(Permissions.editWorkHours);
+                              } else if (permissions.contains(
+                                    Permissions.editWorkHours,
+                                  ) &&
+                                  (value == false)) {
+                                permissions.remove(Permissions.editWorkHours);
+                              }
+                            },
                           ),
                         ),
-                        onPress: () {}, //TODO : Add Function
                       ),
                       const HightSpacing(hight: 16),
                     ],
@@ -311,7 +450,20 @@ class _AddNewEmppScreenState extends State<AddNewEmppScreen> {
                   buttomWidth: 312,
                   backgroundColor: AppColors.blue615,
                   onPressed: () async {
-                    if (_formKey.currentState?.validate() ?? false) {}
+                    if ((permissions.isNotEmpty) &&
+                        (_formKey.currentState?.validate() ?? false)) {
+                      Employees emps = Employees(emloyees: []);
+                      Employee emp = Employee(
+                        name: _nameController.text,
+                        email: _emailController.text,
+                        photoURL: null,
+                        passWord: _passwordController.text,
+                        isLogined: true,
+                        permissions: permissions,
+                      );
+                      emps.emloyees.add(emp);
+                      
+                    }
                   },
                 ),
                 const HightSpacing(hight: 25),
