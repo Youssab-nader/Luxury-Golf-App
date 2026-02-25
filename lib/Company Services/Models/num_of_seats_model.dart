@@ -1,0 +1,4 @@
+enum NumOfSeats { 
+  four,
+  six, 
+}

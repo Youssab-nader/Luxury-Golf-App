@@ -1,19 +1,26 @@
-// import 'package:luxury_golf_app/Users/Models/customer_model.dart';
-// import 'package:luxury_golf_app/Company%20Services/Services%20Models/states_enum.dart';
+import 'package:luxury_golf_app/Admins/Models/employee_model.dart';
+import 'package:luxury_golf_app/Company%20Services/Models/requests_model.dart';
+import 'package:luxury_golf_app/Company%20Services/Models/states_enum.dart';
+import 'package:luxury_golf_app/Users/Models/customer_model.dart';
 
-// class ServiceModel {
-//   final CustomerModel custData;
-//   final String servName;
-//   // final Position servLocation;
-//   final String servStartDate;
-//   final double servPrice;
-//   ServStatus currentServState = ServStatus.disabled;
+class ServiceModel {
+  final String name;
+  final ServStatus status;
+  final RequestsModel request;
+  final CustomerModel customerData;
+  final Employee empData;
+  final String location;
+  final DateTime startDate;
+  final DateTime endDate;
 
-//   ServiceModel({
-//     required this.custData,
-//     required this.servName,
-//     // required this.servLocation,
-//     required this.servStartDate,
-//     required this.servPrice,
-//   });
-// }
+  ServiceModel({
+    required this.name,
+    required this.customerData,
+    required this.empData,
+    required this.location,
+    required this.startDate,
+    required this.endDate,
+    required this.status,
+    required this.request,
+  });
+}

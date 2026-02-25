@@ -1,4 +1,16 @@
-- Phase 1
-	- TODO :
+- #Phase 1 (1/3/2026)
+	- Finish Admin Home Page Categories UI
+		- DONE :Finish Add New Car Screen
+			- TODO : Learning #Uploading photos from phone Gallery
+			- TODO : Learning Showing #Dialogs
+			-
+		- TODO : Finish Service Requests  Screens With Dum Data
+		- TODO : Finish Reports Screens With Dum Data
+		- TODO : Finish Spare Parts Screens
+		- TODO : Finish Edit Work Hours Screen
+		-
+		-
+	- Finish Learning  #APIs
+	-
 - Phase 2
 - Phase 3

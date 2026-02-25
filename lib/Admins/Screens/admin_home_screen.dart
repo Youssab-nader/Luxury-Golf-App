@@ -75,7 +75,9 @@ class AdminsHomeScreen extends StatelessWidget {
                           bordersColor: AppColors.blueC6D,
                           containerColor: AppColors.blueEEF,
                           iconColor: AppColors.blue4F3,
-                          onPress: () {}, //TODO : Add Function
+                          onPress: () {
+                            context.pushNamed(AppRouts.addNewCar);
+                          }, //TODO : Add Function
                         ),
                         const HightSpacing(hight: 16),
                         ClickableCardWidget(

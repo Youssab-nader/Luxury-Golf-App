@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/styling/app_colors.dart';
 import 'package:luxury_golf_app/core/styling/app_styles.dart';
@@ -7,6 +8,7 @@ import 'package:luxury_golf_app/core/styling/app_styles.dart';
 // ignore: must_be_immutable
 class TextFieldWidget extends StatefulWidget {
   final String labelText;
+  final String? labelIconPath;
   final String hintText;
   final TextEditingController? textController;
   double? width;
@@ -25,6 +27,7 @@ class TextFieldWidget extends StatefulWidget {
     this.starIcon,
     this.validationString,
     this.textController,
+    this.labelIconPath,
   });
 
   @override
@@ -43,6 +46,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         const HightSpacing(hight: 3),
         Row(
           children: [
+            (widget.labelIconPath != null)
+                ? SvgPicture.asset(widget.labelIconPath!)
+                : SizedBox(),
             Text(widget.labelText, style: AppTextStyles.textLable),
             Text(
               widget.starIcon ?? '',
@@ -59,7 +65,6 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             maxLines: widget.maxLines ?? 1,
             obscureText: (widget.isPassword && !disPass),
             decoration: InputDecoration(
-              
               suffixIcon:
                   widget.isPassword
                       ? IconButton(

@@ -27,8 +27,6 @@ class _SeeAccountsScreenState extends State<SeeAccountsScreen> {
               child: ScreenHeaderWidget(
                 mainText: 'Employee Accounts',
                 subText: 'Manage employee accounts and access',
-                hight: 88,
-                width: MediaQuery.of(context).size.width,
                 color: AppColors.blue615,
               ),
             ),

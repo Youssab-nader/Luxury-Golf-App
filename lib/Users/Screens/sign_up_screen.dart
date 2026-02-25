@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:luxury_golf_app/ForTest/all_user.dart';
 import 'package:luxury_golf_app/Users/Models/user_model.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
@@ -149,7 +148,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 isLogined: true,
                               );
                               final pref = await SharedPreferences.getInstance();
-                              final Users users = Users(usersList: []);
                               
                             }
                           },

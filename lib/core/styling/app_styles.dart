@@ -95,7 +95,7 @@ class AppTextStyles {
   );
 
   static TextStyle textLable = TextStyle(
-    color: AppColors.grey8A8,
+    color: AppColors.grey364,
     fontWeight: FontWeight.w600,
     fontSize: 14.sp,
   );

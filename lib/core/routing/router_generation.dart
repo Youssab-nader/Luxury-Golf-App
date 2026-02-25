@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:luxury_golf_app/Admins/Screens/add_new_car_screen.dart';
 import 'package:luxury_golf_app/Admins/Screens/add_new_emp.dart';
 import 'package:luxury_golf_app/Admins/Screens/admin_home_screen.dart';
 import 'package:luxury_golf_app/Admins/Screens/see_accounts_screen.dart';
@@ -17,6 +18,7 @@ import 'package:luxury_golf_app/Users/Screens/get_started_screen.dart';
 import 'package:luxury_golf_app/Users/Screens/home_screen.dart';
 import 'package:luxury_golf_app/Users/Screens/login_screen.dart';
 import 'package:luxury_golf_app/Users/Screens/sign_up_screen.dart';
+import 'package:luxury_golf_app/Users/Screens/splash_screen.dart';
 import 'package:luxury_golf_app/core/routing/app_routs.dart';
 
 class RouterGeneration {
@@ -24,11 +26,16 @@ class RouterGeneration {
     errorBuilder:
         (context, state) =>
             Scaffold(body: Center(child: Text('Invalide Screen'))),
-    initialLocation: AppRouts.addNewEmp,
+    initialLocation: AppRouts.splash,
     redirect: (context, state) {
       return null;
     },
     routes: [
+      GoRoute(
+        name: AppRouts.splash,
+        path: AppRouts.splash,
+        builder: (context, state) => SplashScreen(),
+      ),
       GoRoute(
         name: AppRouts.getSrarted,
         path: AppRouts.getSrarted,
@@ -42,7 +49,12 @@ class RouterGeneration {
       GoRoute(
         name: AppRouts.addNewEmp,
         path: AppRouts.addNewEmp,
-        builder: (context, state) => AddNewEmppScreen(),
+        builder: (context, state) => AddNewEmpScreen(),
+      ),
+      GoRoute(
+        name: AppRouts.addNewCar,
+        path: AppRouts.addNewCar,
+        builder: (context, state) => AddNewCarScreen(),
       ),
       GoRoute(
         name: AppRouts.adminsHome,

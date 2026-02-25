@@ -9,3 +9,9 @@ enum ServStatus {
   rejectedByEmployee,       
   invoiceRequested,  
 }
+
+enum RequestStatus {
+  approved,
+  pinding,
+  rejected,
+}

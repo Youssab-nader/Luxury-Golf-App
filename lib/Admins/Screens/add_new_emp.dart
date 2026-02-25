@@ -4,22 +4,21 @@ import 'package:flutter_svg/svg.dart';
 import 'package:luxury_golf_app/Admins/Models/employee_model.dart';
 import 'package:luxury_golf_app/Admins/Models/permissions_model.dart';
 import 'package:luxury_golf_app/Admins/Widgets/screen_header_widget.dart';
-import 'package:luxury_golf_app/ForTest/all_emp.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/clickable_card.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/text_field_widget.dart';
 import 'package:luxury_golf_app/core/styling/app_colors.dart';
 
-class AddNewEmppScreen extends StatefulWidget {
-  const AddNewEmppScreen({super.key});
+class AddNewEmpScreen extends StatefulWidget {
+  const AddNewEmpScreen({super.key});
   // TODO : Make Validation With Regular Exeprision
   @override
-  State<AddNewEmppScreen> createState() => _AddNewEmppScreenState();
+  State<AddNewEmpScreen> createState() => _AddNewEmpScreenState();
 }
 
-class _AddNewEmppScreenState extends State<AddNewEmppScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+class _AddNewEmpScreenState extends State<AddNewEmpScreen> {
+  final GlobalKey<FormState> _empFormKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneNumController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -39,142 +38,175 @@ class _AddNewEmppScreenState extends State<AddNewEmppScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Form(
-            key: _formKey,
+            key: _empFormKey,
             child: Column(
               children: [
                 ScreenHeaderWidget(
                   mainText: 'Add New Employee',
                   subText: 'Create new employee account',
-                  hight: 88,
-                  width: MediaQuery.of(context).size.width,
                   color: AppColors.blue615,
                 ),
                 HightSpacing(hight: 16),
                 Padding(
-                  padding: EdgeInsets.only(top: 10.h, left: 36.w, right: 36.w),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          SvgPicture.asset('assets/icons/person_icon.svg'),
-                          WidthSpacing(width: 8.w),
-                          Text(
-                            'Personal Information',
-                            style: TextStyle(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.grey515,
+                  padding: EdgeInsets.all(16.r),
+                  child: Container(
+                    padding: EdgeInsets.all(20.r),
+                    width: 343.w,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20.r),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.50),
+                          offset: Offset(0, 1),
+                          blurRadius: 1,
+                          spreadRadius: 0,
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            SvgPicture.asset('assets/icons/person_icon.svg'),
+                            WidthSpacing(width: 8.w),
+                            Text(
+                              'Personal Information',
+                              style: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.grey515,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      HightSpacing(hight: 16),
-                      TextFieldWidget(
-                        textController: _nameController,
-                        labelText: 'Full Name',
-                        hintText: ' Ex: Youssab Nader',
-                        starIcon: ' *',
-                        width: 303,
-                        validationString: (String? value) {
-                          if (value == null || value.trim().isEmpty) {
-                            return 'Please Enter Employee Name';
-                          }
-                          return null;
-                        },
-                      ),
-                      TextFieldWidget(
-                        textController: _phoneNumController,
-                        labelText: 'Phone Number',
-                        hintText: ' Ex: 01212345678',
-                        starIcon: ' *',
-                        width: 303,
-                        validationString: (String? value) {
-                          if (value == null || value.trim().isEmpty) {
-                            return 'Please Enter Employee Phone Number';
-                          } else if (value.trim().length != 11) {
-                            return 'Phone Number That You Entered is Not Valid';
-                          }
-                          return null;
-                        },
-                      ),
-                    ],
+                          ],
+                        ),
+                        HightSpacing(hight: 16),
+                        TextFieldWidget(
+                          textController: _nameController,
+                          labelText: 'Full Name',
+                          hintText: ' Ex: Youssab Nader',
+                          starIcon: ' *',
+                          width: 303,
+                          validationString: (String? value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Please Enter Employee Name';
+                            }
+                            return null;
+                          },
+                        ),
+                        HightSpacing(hight: 10),
+                        TextFieldWidget(
+                          textController: _phoneNumController,
+                          labelText: 'Phone Number',
+                          hintText: ' Ex: 01212345678',
+                          starIcon: ' *',
+                          width: 303,
+                          validationString: (String? value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Please Enter Employee Phone Number';
+                            } else if (value.trim().length != 11) {
+                              return 'Phone Number That You Entered is Not Valid';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 HightSpacing(hight: 16),
                 Padding(
-                  padding: EdgeInsets.only(top: 10.h, left: 36.w, right: 36.w),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          SvgPicture.asset('assets/icons/lock_icon.svg'),
-                          WidthSpacing(width: 8.w),
-                          Text(
-                            'Account Security',
-                            style: TextStyle(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.blue044,
+                  padding: EdgeInsets.all(16.r),
+                  child: Container(
+                    padding: EdgeInsets.all(20.r),
+                    width: 343.w,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20.r),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.50),
+                          offset: Offset(0, 1),
+                          blurRadius: 1,
+                          spreadRadius: 0,
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            SvgPicture.asset('assets/icons/lock_icon.svg'),
+                            WidthSpacing(width: 8.w),
+                            Text(
+                              'Account Security',
+                              style: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.blue044,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      HightSpacing(hight: 16),
+                          ],
+                        ),
+                        HightSpacing(hight: 16),
 
-                      TextFieldWidget(
-                        textController: _emailController,
-                        labelText: 'Email ',
-                        hintText: ' Ex: user@gmail.com',
-                        starIcon: ' *',
-                        width: 303,
-                        validationString: (String? value) {
-                          if (value == null || value.trim().isEmpty) {
-                            return 'Please Enter Employee Email';
-                          } else if (!value.contains('@') ||
-                              !value.contains('.')) {
-                            return 'Not Valid Email , Please Enter Valid Email';
-                          }
-                          return null;
-                        },
-                      ),
-                      TextFieldWidget(
-                        textController: _passwordController,
-                        labelText: 'Password',
-                        starIcon: ' *',
-                        hintText: 'Min. 8 characters',
-
-                        width: 303,
-                        validationString: (String? value) {
-                          if (value == null || value.trim().isEmpty) {
-                            return 'Please Enter Employee Account Password';
-                          } else if (value.trim().length < 8) {
-                            return 'Please Enter minimum 8 characters or more';
-                          }
-                          return null;
-                        },
-                      ),
-                      TextFieldWidget(
-                        labelText: 'Confirm Password',
-                        hintText: 'Re-enter password',
-                        starIcon: ' *',
-                        width: 303,
-                        validationString: (String? value) {
-                          if (value == null || value.trim().isEmpty) {
-                            return 'Please Re-enter Employee Account Password';
-                          } else if (value != _passwordController.text) {
-                            return 'Please Re-enter Password Correctly';
-                          }
-                          return null;
-                        },
-                      ),
-                    ],
+                        TextFieldWidget(
+                          textController: _emailController,
+                          labelText: 'Email ',
+                          hintText: ' Ex: user@gmail.com',
+                          starIcon: ' *',
+                          width: 303,
+                          validationString: (String? value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Please Enter Employee Email';
+                            } else if (!value.contains('@') ||
+                                !value.contains('.')) {
+                              return 'Not Valid Email , Please Enter Valid Email';
+                            }
+                            return null;
+                          },
+                        ),
+                        HightSpacing(hight: 10),
+                        TextFieldWidget(
+                          textController: _passwordController,
+                          labelText: 'Password',
+                          starIcon: ' *',
+                          hintText: 'Min. 8 characters',
+                          isPassword: true,
+                          width: 303,
+                          validationString: (String? value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Please Enter Employee Account Password';
+                            } else if (value.trim().length < 8) {
+                              return 'Please Enter minimum 8 characters or more';
+                            }
+                            return null;
+                          },
+                        ),
+                        HightSpacing(hight: 10),
+                        TextFieldWidget(
+                          labelText: 'Confirm Password',
+                          hintText: 'Re-enter password',
+                          starIcon: ' *',
+                          isPassword: true,
+                          width: 303,
+                          validationString: (String? value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Please Re-enter Employee Account Password';
+                            } else if (value != _passwordController.text) {
+                              return 'Please Re-enter Password Correctly';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const HightSpacing(hight: 20),
                 Container(
                   padding: EdgeInsets.all(20.r),
                   width: 343.w,
-                  height: 770.h,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16.r),
@@ -450,19 +482,9 @@ class _AddNewEmppScreenState extends State<AddNewEmppScreen> {
                   buttomWidth: 312,
                   backgroundColor: AppColors.blue615,
                   onPressed: () async {
-                    if ((permissions.isNotEmpty) &&
-                        (_formKey.currentState?.validate() ?? false)) {
-                      Employees emps = Employees(emloyees: []);
-                      Employee emp = Employee(
-                        name: _nameController.text,
-                        email: _emailController.text,
-                        photoURL: null,
-                        passWord: _passwordController.text,
-                        isLogined: true,
-                        permissions: permissions,
-                      );
-                      emps.emloyees.add(emp);
-                      
+                    if ((_empFormKey.currentState?.validate() ?? false) &&
+                        (permissions.isNotEmpty)) {
+                     
                     }
                   },
                 ),

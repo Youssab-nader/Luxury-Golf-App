@@ -8,16 +8,12 @@ import 'package:luxury_golf_app/core/styling/app_styles.dart';
 class ScreenHeaderWidget extends StatelessWidget {
   final String mainText;
   final String subText;
-  final double hight;
-  final double width;
   final Color color;
 
   const ScreenHeaderWidget({
     super.key,
     required this.mainText,
     required this.subText,
-    required this.hight,
-    required this.width,
     required this.color,
   });
 
@@ -26,8 +22,8 @@ class ScreenHeaderWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10.r),
       color: color,
-      width: width.w,
-      height: hight.h,
+      width: MediaQuery.of(context).size.width.w,
+      height: 88.h,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
