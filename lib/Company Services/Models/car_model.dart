@@ -6,7 +6,7 @@ import 'package:luxury_golf_app/Company%20Services/Models/spar_parts_model.dart'
 class CarModel {
   final String brandName;
   final String chassisNum;
-  final List<File> imagesPath;
+  final List<File> imagesPaths;
   final String color;
   final NumOfSeats numOfSeats;
   final String model;
@@ -15,7 +15,7 @@ class CarModel {
   CarModel({
     required this.color,
     required this.chassisNum,
-    required this.imagesPath,
+    required this.imagesPaths,
     required this.numOfSeats,
     required this.modelYear,
     required this.brandName,
@@ -27,15 +27,15 @@ class CompanyCarModel extends CarModel {
   String id = '';
   double rentPricePerDay;
   final int? carRate;
-  final List<DateTime> busyList;
+  final bool isAvailable;
 
   CompanyCarModel({
     this.carRate,
     required this.rentPricePerDay,
-    required this.busyList,
+    required this.isAvailable,
     required super.color,
     required super.chassisNum,
-    required super.imagesPath,
+    required super.imagesPaths,
     required super.numOfSeats,
     required super.modelYear,
     required super.brandName,
@@ -77,7 +77,7 @@ class CustomerCarModel extends CarModel {
     required this.ownerAddress,
     required this.sparParts,
     required super.chassisNum,
-    required super.imagesPath,
+    required super.imagesPaths,
     required super.numOfSeats,
     required super.modelYear,
     required super.color,

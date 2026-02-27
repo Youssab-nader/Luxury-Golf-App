@@ -5,6 +5,7 @@ import 'package:luxury_golf_app/core/routing/router_generation.dart';
 import 'package:luxury_golf_app/core/styling/app_themes.dart';
 
 void main() {
+  
   runApp(const MyApp());
 }
 

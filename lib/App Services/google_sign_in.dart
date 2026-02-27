@@ -6,12 +6,11 @@ import 'package:luxury_golf_app/App%20Services/local_storage_service.dart';
 
 class SigninWithGoogle {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
-
   Future<bool> signIn() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
 
-      if (googleUser == null) return false;
+        if (googleUser == null) return false;
 
       final user = User(
         name: googleUser.displayName ?? '',

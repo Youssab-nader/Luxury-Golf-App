@@ -3,12 +3,15 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:luxury_golf_app/Admins/Widgets/screen_header_widget.dart';
 import 'package:luxury_golf_app/Company%20Services/Models/car_model.dart';
 import 'package:luxury_golf_app/Company%20Services/Models/num_of_seats_model.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/text_field_widget.dart';
+import 'package:luxury_golf_app/core/routing/app_routs.dart';
 import 'package:luxury_golf_app/core/styling/app_colors.dart';
 import 'package:luxury_golf_app/core/styling/app_styles.dart';
 
@@ -19,16 +22,37 @@ class AddNewCarScreen extends StatefulWidget {
   State<AddNewCarScreen> createState() => _AddNewCarScreenState();
 }
 
-final GlobalKey<FormState> _newCarFormKey = GlobalKey<FormState>();
-final TextEditingController _carNumController = TextEditingController();
-final TextEditingController _brandController = TextEditingController();
-final TextEditingController _carColorController = TextEditingController();
-final TextEditingController _modelController = TextEditingController();
-final TextEditingController _yearController = TextEditingController();
-bool isFourSeats = true;
-NumOfSeats numOfSeats = isFourSeats ? NumOfSeats.four : NumOfSeats.six;
-
 class _AddNewCarScreenState extends State<AddNewCarScreen> {
+  bool isFourSeats = true;
+  final GlobalKey<FormState> _newCarFormKey = GlobalKey<FormState>();
+  final TextEditingController _carNumController = TextEditingController();
+  final TextEditingController _brandController = TextEditingController();
+  final TextEditingController _carColorController = TextEditingController();
+  final TextEditingController _modelController = TextEditingController();
+  final TextEditingController _yearController = TextEditingController();
+
+  List<File> _carImages = [];
+  @override
+  void dispose() {
+    _carNumController.dispose();
+    _yearController.dispose();
+    _brandController.dispose();
+    _carColorController.dispose();
+    _modelController.dispose();
+    super.dispose();
+  }
+
+  final ImagePicker picker = ImagePicker();
+  void pickImages() async {
+    final List<XFile> pickedImages = await picker.pickMultiImage();
+
+    if (pickedImages.isNotEmpty) {
+      setState(() {
+        _carImages = pickedImages.map((image) => File(image.path)).toList();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -280,31 +304,76 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                           ),
                         ),
                         HightSpacing(hight: 16),
-                        InkWell(
-                          child: Container(
-                            alignment: Alignment.center,
-                            width: 360.w,
-                            height: 135.h,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 1.6,
-                                color: AppColors.greyD1D,
-                              ),
-                              borderRadius: BorderRadius.circular(14.r),
+                        Container(
+                          alignment: Alignment.center,
+                          width: 360.w,
+                          height: 135.h,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1.6,
+                              color: AppColors.greyD1D,
                             ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/icons/camera_icon.svg',
-                                ),
-                                Text(
-                                  'Tap to add photos (max 3)',
-                                  style: AppTextStyles.subgreyText,
-                                ),
-                              ],
-                            ),
+                            borderRadius: BorderRadius.circular(14.r),
                           ),
+                          child:
+                              _carImages.isEmpty
+                                  ? Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      InkWell(
+                                        onTap: pickImages,
+                                        child: SvgPicture.asset(
+                                          'assets/icons/camera_icon.svg',
+                                          width: 50.w,
+                                          height: 50.h,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Tap to add photos (max 4)',
+                                        style: AppTextStyles.subgreyText,
+                                      ),
+                                    ],
+                                  )
+                                  : Row(
+                                    children: [
+                                      Expanded(
+                                        child: GridView.builder(
+                                          itemCount: _carImages.length,
+                                          gridDelegate:
+                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: 1,
+                                              ),
+                                          scrollDirection: Axis.horizontal,
+                                          itemBuilder: (context, index) {
+                                            final image = _carImages[index];
+                                            return Container(
+                                              width: 50,
+                                              height: 50.h,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(16.r),
+                                              ),
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(
+                                                  8.0,
+                                                ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadiusGeometry.circular(
+                                                        16.r,
+                                                      ),
+                                                  child: Image.file(
+                                                    image,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                         ),
                       ],
                     ),
@@ -314,8 +383,11 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                   text: 'Add Golf Cart to Fleet',
                   buttomWidth: 320,
                   onPressed: () async {
-                    if (_newCarFormKey.currentState?.validate() ?? false) {
-                    
+                    if ((_newCarFormKey.currentState?.validate() ?? false) &&
+                        (_carImages.isNotEmpty)) {
+                      //TODO: Add Car in DB With API
+                      NumOfSeats numOfSeats =
+                          isFourSeats ? NumOfSeats.four : NumOfSeats.six;
                       final CompanyCarModel newCar = CompanyCarModel(
                         modelYear: _yearController.text,
                         brandName: _brandController.text,
@@ -323,10 +395,11 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                         color: _carColorController.text,
                         chassisNum: _carNumController.text,
                         numOfSeats: numOfSeats,
-                        busyList: [],
+                        isAvailable: true,
                         rentPricePerDay: 0,
-                        imagesPath: [],
+                        imagesPaths: _carImages,
                       );
+                      context.pushNamed(AppRouts.adminsHome);
                     }
                   },
                   buttomhight: 52,
