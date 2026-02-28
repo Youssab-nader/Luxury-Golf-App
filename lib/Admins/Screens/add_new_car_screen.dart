@@ -9,6 +9,7 @@ import 'package:luxury_golf_app/Admins/Widgets/screen_header_widget.dart';
 import 'package:luxury_golf_app/Company%20Services/Models/car_model.dart';
 import 'package:luxury_golf_app/Company%20Services/Models/num_of_seats_model.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
+import 'package:luxury_golf_app/core/Widgets/image_picking_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/text_field_widget.dart';
 import 'package:luxury_golf_app/core/routing/app_routs.dart';
@@ -42,16 +43,16 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
     super.dispose();
   }
 
-  final ImagePicker picker = ImagePicker();
-  void pickImages() async {
-    final List<XFile> pickedImages = await picker.pickMultiImage();
+  //   final ImagePicker picker = ImagePicker();
+  //   void pickImages() async {
+  //     final List<XFile> pickedImages = await picker.pickMultiImage();
 
-    if (pickedImages.isNotEmpty) {
-      setState(() {
-        _carImages = pickedImages.map((image) => File(image.path)).toList();
-      });
-    }
-  }
+  //     if (pickedImages.isNotEmpty) {
+  //       setState(() {
+  //         _carImages = pickedImages.map((image) => File(image.path)).toList();
+  //       });
+  //     }
+  //   }
 
   @override
   Widget build(BuildContext context) {
@@ -315,65 +316,7 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                             ),
                             borderRadius: BorderRadius.circular(14.r),
                           ),
-                          child:
-                              _carImages.isEmpty
-                                  ? Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      InkWell(
-                                        onTap: pickImages,
-                                        child: SvgPicture.asset(
-                                          'assets/icons/camera_icon.svg',
-                                          width: 50.w,
-                                          height: 50.h,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Tap to add photos (max 4)',
-                                        style: AppTextStyles.subgreyText,
-                                      ),
-                                    ],
-                                  )
-                                  : Row(
-                                    children: [
-                                      Expanded(
-                                        child: GridView.builder(
-                                          itemCount: _carImages.length,
-                                          gridDelegate:
-                                              SliverGridDelegateWithFixedCrossAxisCount(
-                                                crossAxisCount: 1,
-                                              ),
-                                          scrollDirection: Axis.horizontal,
-                                          itemBuilder: (context, index) {
-                                            final image = _carImages[index];
-                                            return Container(
-                                              width: 50,
-                                              height: 50.h,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(16.r),
-                                              ),
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(
-                                                  8.0,
-                                                ),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadiusGeometry.circular(
-                                                        16.r,
-                                                      ),
-                                                  child: Image.file(
-                                                    image,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                          child: ImagePickWidget(images: _carImages),
                         ),
                       ],
                     ),
@@ -387,7 +330,7 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                         (_carImages.isNotEmpty)) {
                       //TODO: Add Car in DB With API
                       NumOfSeats numOfSeats =
-                          isFourSeats ? NumOfSeats.four : NumOfSeats.six;
+                          isFourSeats ? NumOfSeats.f4 : NumOfSeats.s6;
                       final CompanyCarModel newCar = CompanyCarModel(
                         modelYear: _yearController.text,
                         brandName: _brandController.text,
@@ -399,7 +342,67 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                         rentPricePerDay: 0,
                         imagesPaths: _carImages,
                       );
-                      context.pushNamed(AppRouts.adminsHome);
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: 350.h,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 16.w,
+                              vertical: 23.h,
+                            ),
+
+                            child: Column(
+                              children: [
+                                SvgPicture.asset(
+                                  'assets/icons/success_icon.svg',
+                                ),
+                                const HightSpacing(hight: 21),
+                                Text(
+                                  'The New car Added successfully',
+                                  style: TextStyle(
+                                    fontSize: 16.sp,
+                                    color: AppColors.green00A,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const HightSpacing(hight: 16),
+                                Text(
+                                  '${newCar.id} car is ready to rent Now',
+                                  style: AppTextStyles.grey4A5w400s14.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const HightSpacing(hight: 16),
+                                ButtomWidget(
+                                  text: 'Return to Main Page',
+                                  onPressed:
+                                      () => context.pushReplacementNamed(
+                                        AppRouts.adminsHome,
+                                      ),
+
+                                  buttomWidth: 311,
+                                  buttomhight: 44,
+                                ),
+                                const HightSpacing(hight: 16),
+                                ButtomWidget(
+                                  text: 'Add another car',
+                                  onPressed:
+                                      () => context.pushReplacementNamed(
+                                        AppRouts.addNewCar,
+                                      ),
+
+                                  buttomWidth: 311,
+                                  buttomhight: 44,
+                                  backgroundColor: AppColors.white,
+                                  forgroundColor: AppColors.black,
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
                     }
                   },
                   buttomhight: 52,

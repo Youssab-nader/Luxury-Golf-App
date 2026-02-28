@@ -47,10 +47,12 @@ class CompanyCarModel extends CarModel {
   void genCarID() {
     final String carId;
     carId =
-        brandName[0] +
-        model[0] +
-        color[0] +
-        chassisNum[0] +
+        brandName[0].toUpperCase() +
+        brandName[1].toUpperCase() +
+        model[0].toUpperCase() +
+        numOfSeats.name[1] +
+        color[0].toUpperCase() +
+        chassisNum[0].toUpperCase() +
         chassisNum[1] +
         chassisNum[2];
     id = carId;

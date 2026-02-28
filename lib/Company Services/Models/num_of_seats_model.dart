@@ -1,4 +1,5 @@
 enum NumOfSeats { 
-  four,
-  six, 
+  f4,
+  s6, 
 }
+
