@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../styling/app_colors.dart';
-import '../styling/app_styles.dart';
+import '../styles/app_colors.dart';
+import '../styles/app_styles.dart';
 
 class ButtomWidget extends StatelessWidget {
   final VoidCallback onPressed;

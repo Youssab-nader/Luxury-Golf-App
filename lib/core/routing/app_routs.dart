@@ -15,7 +15,4 @@ class AppRouts {
   static const String fixPindingServices = '/fixPindingServices';
   static const String fixHistory = '/fixHistory';
   static const String rent = '/rent';
-  static const String garage = '/garage';
-  static const String events = '/events';
-  static const String bookEventOne = '/bookEventOne';
 }

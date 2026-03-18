@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:luxury_golf_app/Admins/Screens/add_new_car_screen.dart';
-import 'package:luxury_golf_app/Admins/Screens/add_new_emp.dart';
-import 'package:luxury_golf_app/Admins/Screens/admin_home_screen.dart';
-import 'package:luxury_golf_app/Admins/Screens/see_accounts_screen.dart';
-import 'package:luxury_golf_app/Company%20Services/Events/Screens/book_event_one_screen.dart';
-import 'package:luxury_golf_app/Company%20Services/Events/Screens/events_home_screen.dart';
-import 'package:luxury_golf_app/Company%20Services/Fixing/Screens/checkout_repair_confirm_screen.dart';
-import 'package:luxury_golf_app/Company%20Services/Fixing/Screens/checkout_repair_customerinfo_screen.dart';
-import 'package:luxury_golf_app/Company%20Services/Fixing/Screens/checkout_repair_details_screen.dart';
-import 'package:luxury_golf_app/Company%20Services/Fixing/Screens/fix_history_service_screen.dart';
-import 'package:luxury_golf_app/Company%20Services/Fixing/Screens/fix_pinding_service_screen.dart';
-import 'package:luxury_golf_app/Company%20Services/Fixing/Screens/fix_home_screen.dart';
-import 'package:luxury_golf_app/Company%20Services/Garage/Screens/garage_home_screen.dart';
-import 'package:luxury_golf_app/Company%20Services/Rent/Screens/rent_home_screen.dart';
-import 'package:luxury_golf_app/Users/Screens/get_started_screen.dart';
-import 'package:luxury_golf_app/Users/Screens/home_screen.dart';
-import 'package:luxury_golf_app/Users/Screens/login_screen.dart';
-import 'package:luxury_golf_app/Users/Screens/sign_up_screen.dart';
-import 'package:luxury_golf_app/Users/Screens/splash_screen.dart';
+import 'package:luxury_golf_app/Features/Admins/Features/add_cars/add_new_car_screen.dart';
+import 'package:luxury_golf_app/Features/Admins/Features/add_emp/admins_Sign_up.dart';
+import 'package:luxury_golf_app/Features/Admins/Features/main/admin_home_screen.dart';
+import 'package:luxury_golf_app/Features/Admins/Features/add_emp/see_accounts_screen.dart';
+import 'package:luxury_golf_app/Features/Fixing/Screens/checkout_repair_confirm_screen.dart';
+import 'package:luxury_golf_app/Features/Fixing/Screens/checkout_repair_customerinfo_screen.dart';
+import 'package:luxury_golf_app/Features/Fixing/Screens/checkout_repair_details_screen.dart';
+import 'package:luxury_golf_app/Features/Fixing/Screens/fix_history_service_screen.dart';
+import 'package:luxury_golf_app/Features/Fixing/Screens/fix_pinding_service_screen.dart';
+import 'package:luxury_golf_app/Features/Fixing/Screens/fix_home_screen.dart';
+import 'package:luxury_golf_app/Features/Rent/Screens/rent_home_screen.dart';
+import 'package:luxury_golf_app/Features/main/get_started_screen.dart';
+import 'package:luxury_golf_app/Features/main/home_screen.dart';
+import 'package:luxury_golf_app/Features/Auth/Sign_in/login_screen.dart';
+import 'package:luxury_golf_app/Features/Auth/Sign_up/sign_up_screen.dart';
+import 'package:luxury_golf_app/Features/main/splash_screen.dart';
 import 'package:luxury_golf_app/core/routing/app_routs.dart';
 
 class RouterGeneration {
@@ -81,26 +78,13 @@ class RouterGeneration {
         path: AppRouts.rent,
         builder: (context, state) => RentScreen(),
       ),
-      GoRoute(
-        name: AppRouts.garage,
-        path: AppRouts.garage,
-        builder: (context, state) => GarageScreen(),
-      ),
+
       GoRoute(
         name: AppRouts.seeEmpAccounts,
         path: AppRouts.seeEmpAccounts,
         builder: (context, state) => SeeAccountsScreen(),
       ),
-      GoRoute(
-        name: AppRouts.events,
-        path: AppRouts.events,
-        builder: (context, state) => EventsScreen(),
-      ),
-      GoRoute(
-        name: AppRouts.bookEventOne,
-        path: AppRouts.bookEventOne,
-        builder: (context, state) => BookEventOne(),
-      ),
+
       GoRoute(
         name: AppRouts.checkOutRepairCustomerInfo,
         path: AppRouts.checkOutRepairCustomerInfo,

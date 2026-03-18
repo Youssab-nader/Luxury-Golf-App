@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
-import 'package:luxury_golf_app/core/styling/app_colors.dart';
-import 'package:luxury_golf_app/core/styling/app_styles.dart';
+import 'package:luxury_golf_app/core/styles/app_colors.dart';
+import 'package:luxury_golf_app/core/styles/app_styles.dart';
 
 class NavigationBarWidget extends StatefulWidget {
   const NavigationBarWidget({super.key});
