@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:luxury_golf_app/core/Widgets/navigation_bar_widget.dart';
+import 'package:luxury_golf_app/Features/main/navigation_bar_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/service_categories_card.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/routing/app_routs.dart';
@@ -34,29 +34,16 @@ class _ServiceFirstScreenState extends State<ServiceFirstScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+      //TODO : Solve  arrow_back Icon Problem
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Stack(
-              children: [
-                Image.asset(
-                  widget.topImagePath,
-                  width: double.infinity,
-                  height: 256.h,
-                  fit: BoxFit.fill,
-                ),
-
-                Positioned(
-                  left: 8.w,
-                  top: 23.h,
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(Icons.arrow_back),
-                  ),
-                ),
-              ],
+            Image.asset(
+              widget.topImagePath,
+              width: double.infinity,
+              height: 256.h,
+              fit: BoxFit.fill,
             ),
             Padding(
               padding: EdgeInsetsGeometry.fromLTRB(24.w, 69.h, 12.w, 80.h),
@@ -101,7 +88,6 @@ class _ServiceFirstScreenState extends State<ServiceFirstScreen> {
                 ],
               ),
             ),
-            NavigationBarWidget(),
           ],
         ),
       ),

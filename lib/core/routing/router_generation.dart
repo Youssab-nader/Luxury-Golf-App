@@ -15,6 +15,7 @@ import 'package:luxury_golf_app/Features/main/get_started_screen.dart';
 import 'package:luxury_golf_app/Features/main/home_screen.dart';
 import 'package:luxury_golf_app/Features/Auth/Sign_in/login_screen.dart';
 import 'package:luxury_golf_app/Features/Auth/Sign_up/sign_up_screen.dart';
+import 'package:luxury_golf_app/Features/main/navigation_bar_widget.dart';
 import 'package:luxury_golf_app/Features/main/splash_screen.dart';
 import 'package:luxury_golf_app/core/routing/app_routs.dart';
 
@@ -23,10 +24,12 @@ class RouterGeneration {
     errorBuilder:
         (context, state) =>
             Scaffold(body: Center(child: Text('Invalide Screen'))),
-    initialLocation: AppRouts.adminsHome,
-    redirect: (context, state) {
-      return null;
-    },
+    initialLocation: AppRouts.main,
+    
+    // redirect: (context, state) {
+    //   return null;
+    // },
+
     routes: [
       GoRoute(
         name: AppRouts.splash,
@@ -94,6 +97,11 @@ class RouterGeneration {
         name: AppRouts.checkOutRepairDetails,
         path: AppRouts.checkOutRepairDetails,
         builder: (context, state) => CheckOutRepairDetails(),
+      ),
+      GoRoute(
+        name: AppRouts.main,
+        path: AppRouts.main,
+        builder: (context, state) => MainScreens(),
       ),
       GoRoute(
         name: AppRouts.checkOutRepairConfirm,

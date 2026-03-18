@@ -8,9 +8,17 @@ class AppThemes {
   static ThemeData lightTheme = ThemeData(
     fontFamily: AppFonts.mainFont,
     scaffoldBackgroundColor: AppColors.white,
+    splashFactory: NoSplash.splashFactory,
+    highlightColor: Colors.transparent,
     textTheme: TextTheme(
       titleLarge: AppTextStyles.primaryTextStyle,
       titleSmall: AppTextStyles.subTextStyle,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.white,
+      selectedItemColor: AppColors.blue055,
+      unselectedItemColor: AppColors.grey585,
+      showUnselectedLabels: true,
     ),
   );
 }
