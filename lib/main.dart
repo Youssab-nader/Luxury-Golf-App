@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:luxury_golf_app/Features/Auth/Sign_in/login_screen.dart';
 import 'package:luxury_golf_app/Features/main/navigation_bar_widget.dart';
 import 'package:luxury_golf_app/core/routing/router_generation.dart';
 import 'package:luxury_golf_app/core/styles/app_themes.dart';

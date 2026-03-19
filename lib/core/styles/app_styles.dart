@@ -49,7 +49,7 @@ class AppTextStyles {
   static TextStyle headLineText = TextStyle(
     color: AppColors.blue044,
     fontWeight: FontWeight.w800,
-    fontSize: 40.sp,
+    fontSize: 24.sp,
   );
 
   static TextStyle getStartedTex = TextStyle(

@@ -82,38 +82,25 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               HightSpacing(hight: 24),
               Text('Home', style: AppTextStyles.headLineText),
-              HightSpacing(hight: 29),
-              SizedBox(
-                width: 344.w,
-                height: 203.h,
-                child: Row(
-                  children: [
-                    ServiceCardWidget(
-                      onTap: () {
-                        context.pushNamed(AppRouts.rent);
-                      },
-                      imagePath: 'assets/images/golf_car_service_card.jpg',
-                      serviceName: 'Rent',
-                      svgIconPath: 'assets/icons/golf_car_icon.svg',
-                    ),
-                    WidthSpacing(width: 8),
-                    ServiceCardWidget(
-                      onTap: () {
-                        context.pushNamed(AppRouts.fix);
-                      },
-                      imagePath: 'assets/images/fix_man.jpg',
-                      serviceName: 'Fix',
-                      svgIconPath: 'assets/icons/fix_icon.svg',
-                    ),
-                  ],
-                ),
+              HightSpacing(hight: 16),
+              ServiceCardWidget(
+                onTap: () {
+                  context.pushNamed(AppRouts.rent);
+                },
+                imagePath: 'assets/images/rent_service_card.png',
+                serviceName: 'Rent',
+                svgIconPath: 'assets/icons/golf_car_icon.svg',
+              ),
+              HightSpacing(hight: 69),
+              ServiceCardWidget(
+                onTap: () {
+                  context.pushNamed(AppRouts.fix);
+                },
+                imagePath: 'assets/images/fix_man.jpg',
+                serviceName: 'Fix',
+                svgIconPath: 'assets/icons/fix_icon.svg',
               ),
               HightSpacing(hight: 5),
-              SizedBox(
-                width: 338.w,
-                child: Divider(thickness: 1, color: AppColors.black),
-              ),
-             
             ],
           ),
         ),
