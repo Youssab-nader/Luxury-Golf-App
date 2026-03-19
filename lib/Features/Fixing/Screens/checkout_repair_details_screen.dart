@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
+import 'package:luxury_golf_app/core/Widgets/image_picking_widget.dart';
 import '../Widgets/fix_section_card.dart';
 import 'package:luxury_golf_app/core/Widgets/small_slider_bar_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
@@ -20,6 +23,7 @@ class CheckOutRepairDetails extends StatefulWidget {
 }
 
 class _CheckOutRepairDetailsState extends State<CheckOutRepairDetails> {
+  final List<File> images = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,33 +123,21 @@ class _CheckOutRepairDetailsState extends State<CheckOutRepairDetails> {
 
               TextFieldWidget(
                 labelText: 'Problem Description *',
-                maxLines: 20,
+                maxLines: 5,
+
                 hintText:
                     'Please describe the issue in detail. What symptoms are you experiencing? When did it start?',
-                width: 90,
               ),
               const HightSpacing(hight: 16),
-              Text('Add Photos (Optional)', style: AppTextStyles.textLable),
-              InkWell(
-                child: Container(
-                  alignment: Alignment.center,
-                  width: 360.w,
-                  height: 95.2.h,
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 1.6, color: AppColors.greyD1D),
-                    borderRadius: BorderRadius.circular(14.r),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset('assets/icons/camera_icon.svg'),
-                      Text(
-                        'Tap to add photos (max 3)',
-                        style: AppTextStyles.subgreyText,
-                      ),
-                    ],
-                  ),
+              Container(
+                alignment: Alignment.center,
+                width: 360.w,
+                height: 135.h,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1.6, color: AppColors.greyD1D),
+                  borderRadius: BorderRadius.circular(14.r),
                 ),
+                child: ImagePickWidget(images: images),
               ),
               const HightSpacing(hight: 32),
               Center(

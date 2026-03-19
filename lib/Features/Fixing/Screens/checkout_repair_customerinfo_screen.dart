@@ -63,10 +63,10 @@ class _CheckOutRepairCustomerInfoState
                   'Customer Information',
                   style: AppTextStyles.blue101w400s16,
                 ),
+                const HightSpacing(hight: 10),
                 Container(
                   padding: EdgeInsets.fromLTRB(7.w, 16.h, 7.w, 16.h),
-                  height: 348.h,
-                  width: 345.w,
+
                   decoration: BoxDecoration(
                     color: AppColors.white,
                     borderRadius: BorderRadius.circular(16.r),
@@ -83,17 +83,14 @@ class _CheckOutRepairCustomerInfoState
                       TextFieldWidget(
                         labelText: 'Full name',
                         hintText: 'Youssab Nander Gamil',
-                        width: 48,
                       ),
                       TextFieldWidget(
                         labelText: 'Phone number',
                         hintText: '0121234567',
-                        width: 48,
                       ),
                       TextFieldWidget(
                         labelText: 'Email address',
                         hintText: 'example@gmail.com',
-                        width: 48,
                       ),
                     ],
                   ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:luxury_golf_app/Features/Admins/Features/add_cars/add_new_car_screen.dart';
-import 'package:luxury_golf_app/Features/Admins/Features/add_emp/admins_Sign_up.dart';
+import 'package:luxury_golf_app/Features/Admins/Features/add_emp/admins_sign_up.dart';
 import 'package:luxury_golf_app/Features/Admins/Features/main/admin_home_screen.dart';
 import 'package:luxury_golf_app/Features/Admins/Features/add_emp/see_accounts_screen.dart';
 import 'package:luxury_golf_app/Features/Fixing/Screens/checkout_repair_confirm_screen.dart';

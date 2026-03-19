@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:luxury_golf_app/core/Components/screen_header_widget.dart';
 import 'package:luxury_golf_app/core/Models/car_model.dart';
 import 'package:luxury_golf_app/core/Models/num_of_seats_model.dart';
@@ -104,7 +103,6 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                           labelText: 'Car Number (Chassis number)',
                           hintText: ' EX : Zxc1565161',
                           starIcon: ' *',
-                          width: 303,
                           validationString: (String? value) {
                             if (value == null || value.trim().isEmpty) {
                               return 'Please Enter Chassis number';
@@ -120,7 +118,6 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                           labelText: 'Brand',
                           hintText: 'e.g., Club Car, EZGO, Yamaha',
                           starIcon: ' *',
-                          width: 303,
                           validationString: (String? value) {
                             if (value == null || value.trim().isEmpty) {
                               return 'Please Enter Car Brand';
@@ -134,7 +131,6 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                           labelText: 'Model',
                           hintText: 'e.g., Precedent, RXV',
                           starIcon: ' *',
-                          width: 303,
                           validationString: (String? value) {
                             if (value == null || value.trim().isEmpty) {
                               return 'Please Enter Car Model';
@@ -148,7 +144,6 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                           labelText: 'Year',
                           hintText: 'e.g., 2010 , 2021',
                           starIcon: ' *',
-                          width: 303,
                           validationString: (String? value) {
                             if (value == null || value.trim().isEmpty) {
                               return 'Please Enter Year of manufacture';
@@ -207,7 +202,6 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                           labelText: ' Color',
                           hintText: '',
                           labelIconPath: 'assets/icons/color_icon.svg',
-                          width: 303,
                           validationString: (String? value) {
                             if (value == null || value.trim().isEmpty) {
                               return 'Please Enter Car Color';

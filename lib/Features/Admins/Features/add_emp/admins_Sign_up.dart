@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:luxury_golf_app/core/Models/employee_model.dart';
 import 'package:luxury_golf_app/core/Models/permissions_model.dart';
 import 'package:luxury_golf_app/core/Components/screen_header_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
@@ -86,7 +85,6 @@ class _AddNewEmpScreenState extends State<AddNewEmpScreen> {
                           labelText: 'Full Name',
                           hintText: ' Ex: Youssab Nader',
                           starIcon: ' *',
-                          width: 303,
                           validationString: (String? value) {
                             if (value == null || value.trim().isEmpty) {
                               return 'Please Enter Employee Name';
@@ -100,7 +98,6 @@ class _AddNewEmpScreenState extends State<AddNewEmpScreen> {
                           labelText: 'Phone Number',
                           hintText: ' Ex: 01212345678',
                           starIcon: ' *',
-                          width: 303,
                           validationString: (String? value) {
                             if (value == null || value.trim().isEmpty) {
                               return 'Please Enter Employee Phone Number';
@@ -155,7 +152,6 @@ class _AddNewEmpScreenState extends State<AddNewEmpScreen> {
                           labelText: 'Email ',
                           hintText: ' Ex: user@gmail.com',
                           starIcon: ' *',
-                          width: 303,
                           validationString: (String? value) {
                             if (value == null || value.trim().isEmpty) {
                               return 'Please Enter Employee Email';
@@ -173,7 +169,6 @@ class _AddNewEmpScreenState extends State<AddNewEmpScreen> {
                           starIcon: ' *',
                           hintText: 'Min. 8 characters',
                           isPassword: true,
-                          width: 303,
                           validationString: (String? value) {
                             if (value == null || value.trim().isEmpty) {
                               return 'Please Enter Employee Account Password';
@@ -189,7 +184,6 @@ class _AddNewEmpScreenState extends State<AddNewEmpScreen> {
                           hintText: 'Re-enter password',
                           starIcon: ' *',
                           isPassword: true,
-                          width: 303,
                           validationString: (String? value) {
                             if (value == null || value.trim().isEmpty) {
                               return 'Please Re-enter Employee Account Password';

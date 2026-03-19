@@ -11,7 +11,6 @@ class TextFieldWidget extends StatefulWidget {
   final String? labelIconPath;
   final String hintText;
   final TextEditingController? textController;
-  double? width;
   String? starIcon;
   int? maxLines;
   bool isPassword;
@@ -23,7 +22,6 @@ class TextFieldWidget extends StatefulWidget {
     this.isPassword = false,
     this.maxLines,
     required this.hintText,
-    this.width,
     this.starIcon,
     this.validationString,
     this.textController,
@@ -58,7 +56,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         ),
         HightSpacing(hight: 5),
         SizedBox(
-          width: widget.width?.w ?? 343.w,
+          width: 343.w,
           child: TextFormField(
             controller: widget.textController,
             validator: widget.validationString,
