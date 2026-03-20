@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:luxury_golf_app/core/Components/screen_header_widget.dart';
 import 'package:luxury_golf_app/core/Models/car_model.dart';
 import 'package:luxury_golf_app/core/Models/num_of_seats_model.dart';
@@ -30,8 +31,18 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
   final TextEditingController _carColorController = TextEditingController();
   final TextEditingController _modelController = TextEditingController();
   final TextEditingController _yearController = TextEditingController();
-
+  final ImagePicker picker = ImagePicker();
   List<File> _carImages = [];
+
+  void pickImages() async {
+    final List<XFile> pickedImages = await picker.pickMultiImage();
+    if (pickedImages.isNotEmpty) {
+      setState(() {
+        _carImages = pickedImages.map((image) => File(image.path)).toList();
+      });
+    }
+  }
+
   @override
   void dispose() {
     _carNumController.dispose();
@@ -310,7 +321,97 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                             ),
                             borderRadius: BorderRadius.circular(14.r),
                           ),
-                          child: ImagePickWidget(images: _carImages),
+                          child:
+                              _carImages.isEmpty
+                                  ? Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      InkWell(
+                                        onTap: pickImages,
+                                        child: SvgPicture.asset(
+                                          'assets/icons/camera_icon.svg',
+                                          width: 50.w,
+                                          height: 50.h,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Tap to add photos (max 4)',
+                                        style: AppTextStyles.subgreyText,
+                                      ),
+                                    ],
+                                  )
+                                  : Row(
+                                    children: [
+                                      Expanded(
+                                        child: GridView.builder(
+                                          itemCount: _carImages.length,
+                                          gridDelegate:
+                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: 1,
+                                              ),
+                                          scrollDirection: Axis.horizontal,
+                                          itemBuilder: (context, index) {
+                                            final image = _carImages[index];
+                                            return Container(
+                                              margin: EdgeInsets.all(2),
+                                              padding: EdgeInsets.all(1),
+                                              width: 50,
+                                              height: 50.h,
+                                              decoration: BoxDecoration(
+                                                border:
+                                                    (index == 0)
+                                                        ? Border.all(
+                                                          color:
+                                                              AppColors.blue155,
+                                                          width: 2,
+                                                        )
+                                                        : null,
+                                                borderRadius:
+                                                    BorderRadius.circular(16.r),
+                                              ),
+
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadiusGeometry.circular(
+                                                      16.r,
+                                                    ),
+
+                                                child: Stack(
+                                                  children: [
+                                                    Image.file(
+                                                      image,
+                                                      fit: BoxFit.fitHeight,
+                                                      width: 200.w,
+                                                      height: 200.h,
+                                                    ),
+                                                    Positioned(
+                                                      top: 1.h,
+                                                      right: 2.w,
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                          setState(() {
+                                                            _carImages.removeAt(
+                                                              index,
+                                                            );
+                                                          });
+                                                        },
+                                                        icon: Icon(
+                                                          Icons.highlight_off,
+                                                          color:
+                                                              AppColors
+                                                                  .black0A0,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                         ),
                       ],
                     ),
