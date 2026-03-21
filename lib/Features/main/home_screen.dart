@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:luxury_golf_app/Features/main/navigation_bar_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/service_card_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/routing/app_routs.dart';
@@ -24,16 +23,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // _loadUserData();
+    _loadUserData();
   }
 
-  // void _loadUserData() async {
-  //   final pref = await SharedPreferences.getInstance();
-  //   final userDataString = pref.getString('userData');
-  //   _userData = jsonDecode(userDataString ?? '');
-  //   print('User name  : ${_userData['name']}');
-  //   setState(() {});
-  // }
+  void _loadUserData() async {
+    final pref = await SharedPreferences.getInstance();
+    final userDataString = pref.getString('userData');
+    _userData = jsonDecode(userDataString ?? '');
+    print('User name  : ${_userData['name']}');
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {

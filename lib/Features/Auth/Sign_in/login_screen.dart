@@ -124,8 +124,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () async {
                         SigninWithGoogle signIn = SigninWithGoogle();
                         final bool succes = await signIn.signIn();
-                        if (succes) {
-                          context.pushReplacementNamed(AppRouts.homePage);
+                        if (succes && mounted) {
+                          context.goNamed(AppRouts.main);
                         }
                       },
                       buttomhight: 48.h,
