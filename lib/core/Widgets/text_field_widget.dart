@@ -58,6 +58,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         SizedBox(
           width: 343.w,
           child: TextFormField(
+            keyboardType: TextInputType.name,
             controller: widget.textController,
             validator: widget.validationString,
             maxLines: widget.maxLines ?? 1,
