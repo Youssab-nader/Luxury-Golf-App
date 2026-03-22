@@ -170,7 +170,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                             TextButton(
                               onPressed: () {
-                                context.pushNamed(AppRouts.login);
+                                context.pop(AppRouts.login);
                               },
                               child: Text(
                                 'Sign in',

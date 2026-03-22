@@ -6,17 +6,22 @@
 	- Finish Learning  #APIs
 		- DONE : Section 18
 		- DONE : Section 19
-		- TODO : Section 20
-		- TODO : Section 21
+		- DONE : Section 20
+		- DONE : Section 21
+		- DONE : Section 22
 	-
-- Phase 2
-- TODO : Finish Service Requests  Screens With Dum Data
-  :LOGBOOK:
-  CLOCK: [2026-02-28 Sat 07:42:49]
-  :END:
-- TODO : Finish Reports Screens With Dum Data
-- TODO : Finish Spare Parts Screens
-- TODO : Finish Edit Work Hours Screen
+- Fixing Section
+	- Dates Dialogs
+	- List Dialog
+	- Google Maps
+		- get Customer Location
+		- save Customer Location
+		- Display Customer Location
+	- Fix Service Model
+	- Submit Fix Service Request
+	- Learning Hive Local Storage
+	- Save Fixing Service in Hive
+-
 -
 - Phase 3
 -

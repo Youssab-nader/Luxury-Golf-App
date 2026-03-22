@@ -124,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () async {
                         SigninWithGoogle signIn = SigninWithGoogle();
                         final bool succes = await signIn.signIn();
-                        if (succes && mounted) {
+                        if (succes ) {
                           context.goNamed(AppRouts.main);
                         }
                       },
@@ -146,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         TextButton(
                           onPressed: () {
-                            context.pushReplacementNamed(AppRouts.signUp);
+                            context.pushNamed(AppRouts.signUp);
                           },
                           child: Text(
                             'Sign up',
