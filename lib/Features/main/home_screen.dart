@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
               HightSpacing(hight: 16),
               ServiceCardWidget(
                 onTap: () {
-                  context.pushNamed(AppRouts.rent);
+                  context.pushNamed(AppRouts.adminsHome);
                 },
                 imagePath: 'assets/images/rent_service_card.png',
                 serviceName: 'Rent',
