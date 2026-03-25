@@ -44,6 +44,9 @@ dependencies:
   flutter_native_splash: ^2.4.7
   provider: ^6.1.5+1
   dropdown_button2: ^3.0.0
+  flutter_map: ^8.2.2
+  latlong2: ^0.9.1
+  geolocator: ^14.0.2
 
 dev_dependencies:
   flutter_test:
