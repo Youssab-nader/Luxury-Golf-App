@@ -24,9 +24,7 @@ class RouterGeneration {
     errorBuilder:
         (context, state) =>
             Scaffold(body: Center(child: Text('Invalide Screen'))),
-    initialLocation: AppRouts.splash,
-    
-
+    initialLocation: AppRouts.checkOutRepairCustomerInfo,
 
     routes: [
       GoRoute(

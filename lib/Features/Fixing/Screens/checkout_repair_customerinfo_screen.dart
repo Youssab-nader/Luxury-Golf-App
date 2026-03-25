@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:luxury_golf_app/Features/Fixing/Widgets/fixig_place_widget.dart';
+import 'package:luxury_golf_app/core/Components/data_card.dart';
+import 'package:luxury_golf_app/core/Components/dropdown.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/small_slider_bar_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
@@ -81,43 +83,15 @@ class _CheckOutRepairCustomerInfoState
                   child: Column(
                     children: [
                       TextFieldWidget(
-                        labelText: 'Full name',
-                        hintText: 'Youssab Nander Gamil',
-                      ),
-                      TextFieldWidget(
                         labelText: 'Phone number',
                         hintText: '0121234567',
                       ),
-                      TextFieldWidget(
-                        labelText: 'Email address',
-                        hintText: 'example@gmail.com',
-                      ),
+                      HightSpacing(hight: 10),
+                      DropDownWidget(labelText: 'Golf car model'),
+                      HightSpacing(hight: 10),
+                      
                     ],
                   ),
-                ),
-                const HightSpacing(hight: 11),
-                FixingPlace(
-                  mainText: 'fix in our work station',
-                  subText: 'you will send it in our work station',
-                  svgPath: 'assets/icons/trans_car_icon.svg',
-                  isSelected: widget.selectedIndex == 0,
-                  onTap: () {
-                    setState(() {
-                      widget.selectedIndex = 0;
-                    });
-                  },
-                ),
-                const HightSpacing(hight: 16),
-                FixingPlace(
-                  mainText: 'fix at your Home',
-                  subText: 'we will fix the car at your home',
-                  svgPath: 'assets/icons/home_icon_(coloredborders)_icon.svg',
-                  isSelected: widget.selectedIndex == 1,
-                  onTap: () {
-                    setState(() {
-                      widget.selectedIndex = 1;
-                    });
-                  },
                 ),
                 const HightSpacing(hight: 18),
                 Center(

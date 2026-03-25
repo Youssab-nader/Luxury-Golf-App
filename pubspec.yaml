@@ -43,6 +43,7 @@ dependencies:
   image_picker: ^1.2.1
   flutter_native_splash: ^2.4.7
   provider: ^6.1.5+1
+  dropdown_button2: ^3.0.0
 
 dev_dependencies:
   flutter_test:

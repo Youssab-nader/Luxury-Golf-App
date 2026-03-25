@@ -88,6 +88,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                 color: Colors.red,
               ),
               hintText: widget.hintText,
+              hintStyle: AppTextStyles.grey4A5w400s14,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.r),
               ),
