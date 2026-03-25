@@ -11,16 +11,19 @@
 		- DONE : Section 22
 	-
 - Fixing Section
-	- Dates Dialogs
-	- List Dialog
-	- Google Maps
+	- DONE Dates Dialogs
+	  :LOGBOOK:
+	  CLOCK: [2026-03-25 Wed 06:51:18]--[2026-03-25 Wed 06:51:19] =>  00:00:01
+	  :END:
+	- DONE List Dialog
+	- TODO Google Maps
 		- get Customer Location
 		- save Customer Location
 		- Display Customer Location
-	- Fix Service Model
-	- Submit Fix Service Request
-	- Learning Hive Local Storage
-	- Save Fixing Service in Hive
+	- TODO Fix Service Model
+	- TODO Submit Fix Service Request
+	- TODO Learning Hive Local Storage
+	- TODO Save Fixing Service in Hive
 -
 -
 - Phase 3
