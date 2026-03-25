@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:luxury_golf_app/Features/Fixing/Widgets/fixig_place_widget.dart';
 import 'package:luxury_golf_app/core/Components/data_card.dart';
 import 'package:luxury_golf_app/core/Components/dropdown.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
@@ -26,6 +26,7 @@ final GlobalKey<FormState> _key = GlobalKey<FormState>();
 
 class _CheckOutRepairCustomerInfoState
     extends State<CheckOutRepairCustomerInfo> {
+  DateTime? selectedDate;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +90,22 @@ class _CheckOutRepairCustomerInfoState
                       HightSpacing(hight: 10),
                       DropDownWidget(labelText: 'Golf car model'),
                       HightSpacing(hight: 10),
-                      
+                      DataSelectionWidget(
+                        labelText: 'Session Date',
+                        selectionTitle:
+                            (selectedDate != null)
+                                ? selectedDate!
+                                    .toIso8601String()
+                                    .split('T')
+                                    .first
+                                : 'Choose your session  Date',
+                        suffixWidget: GestureDetector(
+                          onTap: () {
+                            _showDatePicker();
+                          },
+                          child: SvgPicture.asset('assets/icons/date_icon.svg'),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -113,5 +129,19 @@ class _CheckOutRepairCustomerInfoState
         ),
       ),
     );
+  }
+
+  void _showDatePicker() async {
+    final pickedDate = await showDatePicker(
+      context: context,
+      firstDate: DateTime.now(),
+      lastDate: DateTime.now().add(Duration(days: 7)),
+    );
+
+    if (pickedDate != null) {
+      setState(() {
+        selectedDate = pickedDate;
+      });
+    }
   }
 }
