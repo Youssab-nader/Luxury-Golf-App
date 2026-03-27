@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+// import 'package:luxury_golf_app/Features/Location_Picker/flutter_map_picker_service.dart';
 import 'package:luxury_golf_app/core/Components/data_card.dart';
 import 'package:luxury_golf_app/core/Components/dropdown.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
@@ -106,6 +107,19 @@ class _CheckOutRepairCustomerInfoState
                           child: SvgPicture.asset('assets/icons/date_icon.svg'),
                         ),
                       ),
+                      HightSpacing(hight: 10),
+                      DataSelectionWidget(
+                        labelText: 'Location ',
+                        selectionTitle: 'Select Your Location',
+                        suffixWidget: GestureDetector(
+                          onTap: () {
+                            // _getLocation();
+                          },
+                          child: SvgPicture.asset(
+                            'assets/icons/location_icon.svg',
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -144,4 +158,14 @@ class _CheckOutRepairCustomerInfoState
       });
     }
   }
+
+//   void _getLocation() async {
+//     final mapService = FlutterMapPickerService();
+
+//     final result = await mapService.pickLocation(context);
+
+//     if (result != null) {
+//       print("Lat: ${result.latitude}, Lng: ${result.longitude}");
+//     }
+//   }
 }
