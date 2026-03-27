@@ -33,11 +33,13 @@ class DataSelectionWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                selectionTitle,
-                style: AppTextStyles.grey4A5w400s14.copyWith(
-                  color: Color(0xff9CA3AF),
-                  fontWeight: FontWeight.w600,
+              Expanded(
+                child: Text(
+                  selectionTitle,
+                  style: AppTextStyles.grey4A5w400s14.copyWith(
+                    color: Color(0xff9CA3AF),
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               suffixWidget,
