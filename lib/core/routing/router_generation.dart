@@ -63,11 +63,6 @@ class RouterGeneration {
         builder: (context, state) => LoginScreen(),
       ),
       GoRoute(
-        name: AppRouts.homePage,
-        path: AppRouts.homePage,
-        builder: (context, state) => HomeScreen(),
-      ),
-      GoRoute(
         name: AppRouts.fix,
         path: AppRouts.fix,
         builder: (context, state) => FixScreen(),
