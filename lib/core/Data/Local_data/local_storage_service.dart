@@ -1,37 +1,38 @@
-import 'dart:convert';
-
-import 'package:luxury_golf_app/core/Models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LocalStorageService {
-  Future<void> setUserData(String userData) async {
-    final pref = await SharedPreferences.getInstance();
-    await pref.setString('userData', userData);
+class PreferencesManager {
+  static final PreferencesManager _instance = PreferencesManager._internal();
+
+  factory PreferencesManager() {
+    return _instance;
   }
 
-  Future<User?> getUserData() async {
-    final pref = await SharedPreferences.getInstance();
-    final data = pref.getString('userData');
+  PreferencesManager._internal();
 
-    if (data == null || data.isEmpty) return null;
+  late final SharedPreferences _pref;
 
-    return User.fromJson(jsonDecode(data));
+  Future init() async {
+    _pref = await SharedPreferences.getInstance();
   }
 
-  Future<void> setEmpData(String empData) async {
-    final pref = await SharedPreferences.getInstance();
-    await pref.setString('empData', empData);
+  //Set
+   Future<bool> setString({required String key, required String value}) async {
+     return await _pref.setString(key, value);
   }
 
-  Future<String> getEmpData() async {
-    final pref = await SharedPreferences.getInstance();
-    final String empData =  pref.getString('empData') ?? 'null';
-    return empData;
+  // Get
+  String? getString({required String key}) {
+       return _pref.getString(key);
+   
   }
-  
-  Future<bool> isLogin() async {
 
+  // Delete
+  Future<bool> remove({required String key}) async {
+   return await _pref.remove(key);
+  }
 
-    return true;
+  Future<bool> clear({required String key}) async {
+   return await _pref.clear();
+
   }
 }

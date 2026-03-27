@@ -74,7 +74,11 @@ class _DropDownWidgetState extends State<DropDownWidget> {
             ),
 
             iconStyleData: IconStyleData(
-              icon: SvgPicture.asset('assets/icons/pubup_icon.svg'),
+              icon: SvgPicture.asset(
+                'assets/icons/pubup_icon.svg',
+                width: 32.w,
+                height: 32.h,
+              ),
             ),
             onChanged: (value) {
               setState(() {

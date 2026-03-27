@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:luxury_golf_app/Features/Auth/Sign_in/google_sign_in.dart';
+import 'package:luxury_golf_app/core/Config/app_keys_config.dart';
+import 'package:luxury_golf_app/core/Data/Local_data/local_storage_service.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/text_field_widget.dart';
@@ -122,10 +124,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       text: 'Continue with Google ',
                       buttomWidth: 343.w,
                       onPressed: () async {
-                        SigninWithGoogle signIn = SigninWithGoogle();
-                        final bool succes = await signIn.signIn();
-                        if (succes ) {
+                        if (PreferencesManager().getString(
+                              key: AppKeysConfig.userDataKey,
+                            ) !=
+                            null) {
                           context.goNamed(AppRouts.main);
+                        } else {
+                          await _googleLogin()
+                              ? context.goNamed(AppRouts.main)
+                              : ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text('Login Faild')),
+                              );
                         }
                       },
                       buttomhight: 48.h,
@@ -167,5 +176,11 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  Future<bool> _googleLogin() async {
+    SigninWithGoogle signIn = SigninWithGoogle();
+    final bool isSuccess = await signIn.signIn();
+    return isSuccess;
   }
 }

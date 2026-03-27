@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:luxury_golf_app/Features/Location_Picker/flutter_map_picker_service.dart';
+import 'package:luxury_golf_app/Features/Location_Picker/flutter_map_picker_service.dart';
 import 'package:luxury_golf_app/core/Components/data_card.dart';
 import 'package:luxury_golf_app/core/Components/dropdown.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
@@ -114,6 +115,7 @@ class _CheckOutRepairCustomerInfoState
                         suffixWidget: GestureDetector(
                           onTap: () {
                             _getLocation();
+
                           },
                           child: SvgPicture.asset(
                             'assets/icons/location_icon.svg',
@@ -159,6 +161,7 @@ class _CheckOutRepairCustomerInfoState
     }
   }
 
+
   void _getLocation() async {
     final mapService = FlutterMapPickerService();
 
@@ -168,4 +171,5 @@ class _CheckOutRepairCustomerInfoState
       print("Lat: ${result.latitude}, Lng: ${result.longitude}");
     }
   }
+
 }

@@ -1,45 +1,27 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:luxury_golf_app/Features/main/home_controller.dart';
 import 'package:luxury_golf_app/core/Widgets/service_card_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/routing/app_routs.dart';
 import 'package:luxury_golf_app/core/styles/app_colors.dart';
 import 'package:luxury_golf_app/core/styles/app_styles.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-Map<String, dynamic> _userData = {};
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    super.initState();
-    _loadUserData();
-  }
-
-  void _loadUserData() async {
-    final pref = await SharedPreferences.getInstance();
-    final userDataString = pref.getString('userData');
-    _userData = jsonDecode(userDataString ?? '');
-    print('User name  : ${_userData['name']}');
-    setState(() {});
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      body: SafeArea(
-        child: Center(
+    return Consumer<HomeController>(
+      builder: (
+        BuildContext context,
+        HomeController controller,
+        Widget? child,
+      ) {
+        return Center(
           child: Column(
             children: [
               Padding(
@@ -60,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Text(
-                      _userData['name'] ?? '',
+                      controller.user.getFirstName(),
                       style: AppTextStyles.grey585w500s10.copyWith(
                         fontWeight: FontWeight.w600,
                         color: AppColors.blue044,
@@ -69,12 +51,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Spacer(),
                     ClipOval(
-                      child: Image.network(
-                        _userData['photoURL'] ??
-                            'https://imgs.search.brave.com/veKl8ET9WhanlBbihrKWBEkRfga_K4vtJ2gNSmAM1iE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dmVjdG9yc3RvY2su/Y29tL2kvNTAwcC80/MS85MS9hdmF0YXIt/ZGVmYXVsdC11c2Vy/LXByb2ZpbGUtaWNv/bi1zaW1wbGUtZmxh/dC1ncmV5LXZlY3Rv/ci01NzIzNDE5MS5q/cGc',
-                        height: 45.h,
-                        width: 45.w,
-                      ),
+                      child:
+                          (controller.user.photoURL == null)
+                              ? SvgPicture.asset(
+                                'assets/images/def_user_image.svg',
+                                height: 45.h,
+                                width: 45.w,
+                              )
+                              : Image.network(
+                                controller.user.photoURL!,
+                                height: 45.h,
+                                width: 45.w,
+                              ),
                     ),
                   ],
                 ),
@@ -102,8 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
               HightSpacing(hight: 5),
             ],
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
