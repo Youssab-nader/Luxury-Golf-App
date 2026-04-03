@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:go_router/go_router.dart';
-// import 'package:luxury_golf_app/Features/Location_Picker/flutter_map_picker_service.dart';
+import 'package:luxury_golf_app/Features/Location_Picker/flutter_map_picker_service.dart';
 import 'package:luxury_golf_app/core/Components/data_card.dart';
 import 'package:luxury_golf_app/core/Components/car_model_dropdown.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
@@ -27,6 +28,7 @@ final GlobalKey<FormState> _key = GlobalKey<FormState>();
 
 class _CheckOutRepairCustomerInfoState
     extends State<CheckOutRepairCustomerInfo> {
+  String? selectedAddress;
   DateTime? selectedDate;
   @override
   Widget build(BuildContext context) {
@@ -110,10 +112,13 @@ class _CheckOutRepairCustomerInfoState
                       HightSpacing(hight: 10),
                       DataSelectionWidget(
                         labelText: 'Location ',
-                        selectionTitle: 'Select Your Location',
+                        selectionTitle:
+                            (selectedAddress == null)
+                                ? 'Select Your Location'
+                                : selectedAddress!,
                         suffixWidget: GestureDetector(
                           onTap: () {
-                            // _getLocation();
+                            _getLocation();
                           },
                           child: SvgPicture.asset(
                             'assets/icons/location_icon.svg',
@@ -161,13 +166,38 @@ class _CheckOutRepairCustomerInfoState
     }
   }
 
-  //   void _getLocation() async {
-  //     final mapService = FlutterMapPickerService();
 
-  //     final result = await mapService.pickLocation(context);
+  void _getLocation() async {
+    final mapService = FlutterMapPickerService();
 
-  //     if (result != null) {
-  //       print("Lat: ${result.latitude}, Lng: ${result.longitude}");
-  //     }
-  //   }
+    final result = await mapService.pickLocation(context);
+
+    if (result != null) {
+      String? address = await getAddressFromLatLng(
+        result.latitude,
+        result.longitude,
+      );
+
+      print("Lat: ${result.latitude}, Lng: ${result.longitude}");
+      print("Address: $address");
+    }
+  }
+
+  Future<String?> getAddressFromLatLng(double lat, double lng) async {
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(lat, lng);
+
+      Placemark place = placemarks.first;
+
+      setState(() {
+        selectedAddress =
+            " ${place.subAdministrativeArea}, ${place.administrativeArea}";
+      });
+    } catch (e) {
+      setState(() {
+        selectedAddress = null;
+      });
+    }
+    return selectedAddress;
+  }
 }
