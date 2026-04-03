@@ -7,15 +7,15 @@ import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/styles/app_colors.dart';
 import 'package:luxury_golf_app/core/styles/app_styles.dart';
 
-class DropDownWidget extends StatefulWidget {
+class CarModelDropDown extends StatefulWidget {
   final String labelText;
-  const DropDownWidget({super.key, required this.labelText});
+  const CarModelDropDown({super.key, required this.labelText});
 
   @override
-  State<DropDownWidget> createState() => _DropDownWidgetState();
+  State<CarModelDropDown> createState() => _CarModelDropDownState();
 }
 
-class _DropDownWidgetState extends State<DropDownWidget> {
+class _CarModelDropDownState extends State<CarModelDropDown> {
   CarsModelsEnum? selectedValue;
   @override
   Widget build(BuildContext context) {

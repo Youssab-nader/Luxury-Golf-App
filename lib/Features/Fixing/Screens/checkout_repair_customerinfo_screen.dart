@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 // import 'package:luxury_golf_app/Features/Location_Picker/flutter_map_picker_service.dart';
 import 'package:luxury_golf_app/core/Components/data_card.dart';
-import 'package:luxury_golf_app/core/Components/dropdown.dart';
+import 'package:luxury_golf_app/core/Components/car_model_dropdown.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/small_slider_bar_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
@@ -86,10 +86,10 @@ class _CheckOutRepairCustomerInfoState
                     children: [
                       TextFieldWidget(
                         labelText: 'Phone number',
-                        hintText: '0121234567',
+                        hintText: '+(20)0121234567',
                       ),
                       HightSpacing(hight: 10),
-                      DropDownWidget(labelText: 'Golf car model'),
+                      CarModelDropDown(labelText: 'Golf car model'),
                       HightSpacing(hight: 10),
                       DataSelectionWidget(
                         labelText: 'Session Date',
@@ -120,6 +120,8 @@ class _CheckOutRepairCustomerInfoState
                           ),
                         ),
                       ),
+                      HightSpacing(hight: 10),
+                      CarModelDropDown(labelText: 'Session start hour'),
                     ],
                   ),
                 ),
@@ -159,13 +161,13 @@ class _CheckOutRepairCustomerInfoState
     }
   }
 
-//   void _getLocation() async {
-//     final mapService = FlutterMapPickerService();
+  //   void _getLocation() async {
+  //     final mapService = FlutterMapPickerService();
 
-//     final result = await mapService.pickLocation(context);
+  //     final result = await mapService.pickLocation(context);
 
-//     if (result != null) {
-//       print("Lat: ${result.latitude}, Lng: ${result.longitude}");
-//     }
-//   }
+  //     if (result != null) {
+  //       print("Lat: ${result.latitude}, Lng: ${result.longitude}");
+  //     }
+  //   }
 }
