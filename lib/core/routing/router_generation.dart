@@ -12,7 +12,6 @@ import 'package:luxury_golf_app/Features/Fixing/Screens/fix_pinding_service_scre
 import 'package:luxury_golf_app/Features/Fixing/Screens/fix_home_screen.dart';
 import 'package:luxury_golf_app/Features/Rent/Screens/rent_home_screen.dart';
 import 'package:luxury_golf_app/Features/main/get_started_screen.dart';
-import 'package:luxury_golf_app/Features/main/home_screen.dart';
 import 'package:luxury_golf_app/Features/Auth/Sign_in/login_screen.dart';
 import 'package:luxury_golf_app/Features/Auth/Sign_up/sign_up_screen.dart';
 import 'package:luxury_golf_app/Features/main/navigation_bar_widget.dart';
