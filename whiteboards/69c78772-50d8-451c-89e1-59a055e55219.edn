@@ -1,0 +1,62 @@
+{:blocks (
+{:block/created-at 1774684092143
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:index 1
+:scale [1 1]
+:type "image"
+:assetId "a8d6b150-590e-11ed-9035-ebf85ccffec3"
+:size [38 38]
+:opacity 1
+:id "4d6271be-2a7a-11f1-a2a1-6b4b263f7bb4"
+:isAspectRatioLocked true
+:objectFit "fill"
+:point [4668.904549052878 538.3068033096805]
+:parentId "63343143-c1b8-4d33-a4d2-b9b91d772e96"
+:nonce 1667215501744
+:clipping 0}}
+:block/updated-at 1774684092143} 
+{:block/created-at 1774684092142
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:index 0
+:scale [1 1]
+:type "image"
+:assetId "a8d1cf51-590e-11ed-9035-ebf85ccffec3"
+:size [38 38]
+:opacity 1
+:id "4d6271bd-2a7a-11f1-a2a1-6b4b263f7bb4"
+:isAspectRatioLocked true
+:objectFit "fill"
+:point [4668.904549052878 0]
+:parentId "63343143-c1b8-4d33-a4d2-b9b91d772e96"
+:nonce 1667215501870
+:clipping 0}}
+:block/updated-at 1774684092142})
+:pages (
+{:block/uuid #uuid "69c78772-50d8-451c-89e1-59a055e55219"
+:block/properties 
+{:ls-type :whiteboard-page
+:logseq.tldraw.page 
+{:id "69c78772-50d8-451c-89e1-59a055e55219"
+:name "69c78772-50d8-451c-89e1-59a055e55219"
+:bindings 
+{}
+:nonce 1
+:assets [
+{:id "a8d1cf51-590e-11ed-9035-ebf85ccffec3"
+:type "image"
+:src "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAAzUlEQVR4nO3SsQ2DUBAFQT4ipCq3RUxbVOXclACbYCHNxBc8rW589u9v4rb53wPeRrBIsEiwSLBIsEiwaLk6OLZ1PDHkLXxYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYdALOSwSaKieXbAAAAABJRU5ErkJggg=="
+:size [76 76]} 
+{:id "a8d6b150-590e-11ed-9035-ebf85ccffec3"
+:type "image"
+:src "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAAz0lEQVR4nO3cIQ6EUAxAwf2rORXXQu+1OBUeNAbyFCE7Y2ual+qO+bftnwvrMo2r+b/5Pr3A2wgWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFgkWCRYJFo27H4icubBIsEiwSLBIsEiwSLDoADzRB1HIy3KwAAAAAElFTkSuQmCC"
+:size [76 76]}]
+:shapes-index ("4d6271bd-2a7a-11f1-a2a1-6b4b263f7bb4" "4d6271be-2a7a-11f1-a2a1-6b4b263f7bb4")}}
+:block/updated-at 1774684174108
+:block/created-at 1774684018363
+:block/type "whiteboard"
+:block/name "69c78772-50d8-451c-89e1-59a055e55219"
+:block/original-name "69c78772-50d8-451c-89e1-59a055e55219"})}
