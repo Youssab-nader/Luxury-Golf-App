@@ -35,7 +35,7 @@ class CustomerModel extends User {
       isLogined: json[AppKeysConfig.userIsLoginedKey],
       photoURL: json[AppKeysConfig.userPhotoUrlKey],
       passWord: json[AppKeysConfig.userPasswordKey],
-      serviceHistory: json[AppKeysConfig.customerServiceHistoryKey],
+      serviceHistory: [],
     );
   }
 }
