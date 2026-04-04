@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:luxury_golf_app/core/Models/permissions_model.dart';
 import 'package:luxury_golf_app/core/Components/screen_header_widget.dart';
+import 'package:luxury_golf_app/core/Models/validations_config.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/clickable_card.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
@@ -169,14 +170,7 @@ class _AddNewEmpScreenState extends State<AddNewEmpScreen> {
                           starIcon: ' *',
                           hintText: 'Min. 8 characters',
                           isPassword: true,
-                          validationString: (String? value) {
-                            if (value == null || value.trim().isEmpty) {
-                              return 'Please Enter Employee Account Password';
-                            } else if (value.trim().length < 8) {
-                              return 'Please Enter minimum 8 characters or more';
-                            }
-                            return null;
-                          },
+                          validationString: ValidationsConfig.passwordValidation()
                         ),
                         HightSpacing(hight: 10),
                         TextFieldWidget(

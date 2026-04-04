@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:luxury_golf_app/core/Data/Local_data/local_storage_service.dart';
 import 'package:luxury_golf_app/core/routing/router_generation.dart';
 import 'package:luxury_golf_app/core/styles/app_themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await PreferencesManager().init();
+  // await PreferencesManager().init();
   runApp(const MyApp());
 }
 

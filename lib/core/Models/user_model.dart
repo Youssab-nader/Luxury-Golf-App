@@ -1,7 +1,6 @@
-import 'package:luxury_golf_app/core/Config/app_keys_config.dart';
-
-class User {
+abstract class User {
   final String name;
+  final String? phoneNumber;
   final String email;
   final String? photoURL;
   final String passWord;
@@ -12,28 +11,21 @@ class User {
     required this.email,
     required this.photoURL,
     required this.passWord,
+    required this.phoneNumber,
     this.isLogined = false,
   });
 
-  Map<String, dynamic> toJson() {
-    return {
-      AppKeysConfig.userNameKey: name,
-      AppKeysConfig.userEmailKey: email,
-      AppKeysConfig.userIsLoginedKey: isLogined,
-      AppKeysConfig.userPhotoUrlKey: photoURL,
-      AppKeysConfig.userPasswordKey: passWord,
-    };
-  }
+  Map<String, dynamic> toJson();
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      name: json[AppKeysConfig.userNameKey],
-     email: json[AppKeysConfig.userEmailKey],
-      isLogined:json[AppKeysConfig.userIsLoginedKey],
-      photoURL:json[AppKeysConfig.userPhotoUrlKey],
-      passWord:json[AppKeysConfig.userPasswordKey]
-    );
-  }
+    // factory User.fromJson(Map<String, dynamic> json) {
+    //   return User(
+    //     name: json[AppKeysConfig.userNameKey],
+    //    email: json[AppKeysConfig.userEmailKey],
+    //     isLogined:json[AppKeysConfig.userIsLoginedKey],
+    //     photoURL:json[AppKeysConfig.userPhotoUrlKey],
+    //     passWord:json[AppKeysConfig.userPasswordKey]
+    //   );
+    // }
 
   String getFirstName() {
     String firstName = '';

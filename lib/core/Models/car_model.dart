@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:luxury_golf_app/core/Models/num_of_seats_model.dart';
+import 'package:luxury_golf_app/core/Enums/num_of_seats_enum.dart';
 import 'package:luxury_golf_app/core/Models/spar_parts_model.dart';
 
 class CarModel {

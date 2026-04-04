@@ -4,8 +4,8 @@ import 'package:luxury_golf_app/Features/Admins/Features/add_cars/add_new_car_sc
 import 'package:luxury_golf_app/Features/Admins/Features/add_emp/admins_sign_up.dart';
 import 'package:luxury_golf_app/Features/Admins/Features/main/admin_home_screen.dart';
 import 'package:luxury_golf_app/Features/Admins/Features/add_emp/see_accounts_screen.dart';
-import 'package:luxury_golf_app/Features/Fixing/Screens/checkout_repair_confirm_screen.dart';
-import 'package:luxury_golf_app/Features/Fixing/Screens/checkout_repair_customerinfo_screen.dart';
+import 'package:luxury_golf_app/Features/Fixing/Screens/servise_confirm_screen.dart';
+import 'package:luxury_golf_app/Features/Fixing/Screens/checkout_customerinfo_screen.dart';
 import 'package:luxury_golf_app/Features/Fixing/Screens/checkout_repair_details_screen.dart';
 import 'package:luxury_golf_app/Features/Fixing/Screens/fix_history_service_screen.dart';
 import 'package:luxury_golf_app/Features/Fixing/Screens/fix_pinding_service_screen.dart';
@@ -23,7 +23,7 @@ class RouterGeneration {
     errorBuilder:
         (context, state) =>
             Scaffold(body: Center(child: Text('Invalide Screen'))),
-    initialLocation: AppRouts.checkOutRepairCustomerInfo,
+    initialLocation: AppRouts.checkOutRepairDetails,
 
     routes: [
       GoRoute(

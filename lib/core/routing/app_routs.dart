@@ -9,9 +9,9 @@ class AppRouts {
   static const String addNewCar = '/addNewCar';
   static const String seeEmpAccounts = '/seeEmpAccounts';
   static const String fix = '/fix';
-  static const String checkOutRepairCustomerInfo = '/checkOutRepairCustomerInfo';
-  static const String checkOutRepairDetails = '/checkOutRepairDetails';
-  static const String checkOutRepairConfirm = '/checkOutRepairConfirm';
+  static const String checkOutRepairCustomerInfo = '/checkoutCustomerInfo';
+  static const String checkOutRepairDetails = '/checkoutRepairDetails';
+  static const String checkOutRepairConfirm = '/serviceConfirm';
   static const String fixPindingServices = '/fixPindingServices';
   static const String fixHistory = '/fixHistory';
   static const String rent = '/rent';

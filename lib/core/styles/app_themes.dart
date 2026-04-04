@@ -8,6 +8,7 @@ class AppThemes {
   static ThemeData lightTheme = ThemeData(
     fontFamily: AppFonts.mainFont,
     scaffoldBackgroundColor: AppColors.white,
+    appBarTheme: AppBarTheme(backgroundColor: AppColors.white),
     splashFactory: NoSplash.splashFactory,
     highlightColor: Colors.transparent,
     textTheme: TextTheme(

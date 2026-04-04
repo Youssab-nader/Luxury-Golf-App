@@ -1,4 +1,4 @@
-import 'package:luxury_golf_app/core/Models/emp_type.dart';
+import 'package:luxury_golf_app/core/Config/app_keys_config.dart';
 import 'package:luxury_golf_app/core/Models/permissions_model.dart';
 import 'package:luxury_golf_app/core/Models/user_model.dart';
 
@@ -11,6 +11,7 @@ class Employee extends User {
     required super.photoURL,
     required super.passWord,
     required super.isLogined,
+    required super.phoneNumber,
     required this.permissions,
   }) {
     id = genEmpID();
@@ -22,8 +23,15 @@ class Employee extends User {
 
   @override
   Map<String, dynamic> toJson() {
-    final empJsonData = super.toJson();
-    empJsonData.addAll({'id': id , 'permissions' : permissions.toString()});
-    return empJsonData;
+    return {
+      AppKeysConfig.userNameKey: name,
+      AppKeysConfig.userEmailKey: email,
+      AppKeysConfig.userPasswordKey: passWord,
+      AppKeysConfig.userPhoneNumKey: phoneNumber,
+      AppKeysConfig.userIsLoginedKey: isLogined,
+      AppKeysConfig.userPhotoUrlKey: photoURL,
+      AppKeysConfig.empIdKey: id,
+      AppKeysConfig.empPermissionsKey: permissions.toString(),
+    };
   }
 }

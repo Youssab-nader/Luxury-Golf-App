@@ -8,7 +8,7 @@ import 'package:luxury_golf_app/Features/Image_Picker/image_picker_controller.da
 import 'package:luxury_golf_app/Features/Image_Picker/image_picker_widget.dart';
 import 'package:luxury_golf_app/core/Components/screen_header_widget.dart';
 import 'package:luxury_golf_app/core/Models/car_model.dart';
-import 'package:luxury_golf_app/core/Models/num_of_seats_model.dart';
+import 'package:luxury_golf_app/core/Enums/num_of_seats_enum.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/text_field_widget.dart';

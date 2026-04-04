@@ -44,7 +44,10 @@ class _SelectHourDropDownState extends State<SelectHourDropDown> {
                     )
                     : Text(
                       'Select Session start hour',
-                      style: AppTextStyles.textLable,
+                      style: AppTextStyles.grey4A5w400s14.copyWith(
+                        color: Color(0xff9CA3AF),
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
             items:
                 CarsModelsEnum.values.map((model) {
@@ -86,7 +89,6 @@ class _SelectHourDropDownState extends State<SelectHourDropDown> {
             onChanged: (value) {
               setState(() {
                 selectedValue = value;
-                print('THe Value => ${value?.modelName}');
               });
             },
           ),
@@ -95,4 +97,3 @@ class _SelectHourDropDownState extends State<SelectHourDropDown> {
     );
   }
 }
-

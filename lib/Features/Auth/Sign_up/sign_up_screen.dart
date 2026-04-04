@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:luxury_golf_app/core/Models/customer_model.dart';
 import 'package:luxury_golf_app/core/Models/user_model.dart';
+import 'package:luxury_golf_app/core/Models/validations_config.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/text_field_widget.dart';
@@ -17,7 +19,6 @@ class SignUpScreen extends StatefulWidget {
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-//TODO : Change Validation To Regulaer Expression Validation
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 final TextEditingController _nameController = TextEditingController();
 final TextEditingController _phoneNumController = TextEditingController();
@@ -94,15 +95,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           labelText: 'Email',
                           hintText: 'user@email.com',
                           textController: _emailController,
-                          validationString: (String? value) {
-                            if (value == null || value.trim().isEmpty) {
-                              return 'Please Enter Employee Email';
-                            } else if (!value.contains('@') ||
-                                !value.contains('.')) {
-                              return 'Not Valid Email , Please Enter Valid Email';
-                            }
-                            return null;
-                          },
+                          validationString: ValidationsConfig.emailValidation(),
+                        ),
+                        TextFieldWidget(
+                          labelText: 'Phone Number',
+                          hintText: '+(20)0120201',
+                          textController: _phoneNumController,
+                          validationString: ValidationsConfig.phoneValidation(),
                         ),
                         HightSpacing(hight: 10),
                         TextFieldWidget(
@@ -110,14 +109,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           labelText: 'Password',
                           hintText: '*********',
                           textController: _passwordController,
-                          validationString: (String? value) {
-                            if (value == null || value.trim().isEmpty) {
-                              return 'Please Enter Employee Account Password';
-                            } else if (value.trim().length < 8) {
-                              return 'Please Enter minimum 8 characters or more';
-                            }
-                            return null;
-                          },
+                          validationString: ValidationsConfig.passwordValidation(),
                         ),
                         HightSpacing(hight: 10),
                         TextFieldWidget(
@@ -140,15 +132,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           buttomWidth: 343.w,
                           onPressed: () async {
                             if (_formKey.currentState?.validate() ?? false) {
-                               User user = User(
+                              final CustomerModel newCustomer = CustomerModel(
                                 name: _nameController.text,
                                 email: _emailController.text,
+                                phoneNumber: _phoneNumController.text,
                                 photoURL: null,
                                 passWord: _passwordController.text,
                                 isLogined: true,
+                                serviceHistory: [], 
                               );
-                              final pref = await SharedPreferences.getInstance();
-                              
                             }
                           },
                           buttomhight: 48.h,

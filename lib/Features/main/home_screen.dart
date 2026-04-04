@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      controller.user.getFirstName(),
+                      controller.customer.getFirstName(),
                       style: AppTextStyles.grey585w500s10.copyWith(
                         fontWeight: FontWeight.w600,
                         color: AppColors.blue044,
@@ -52,14 +52,14 @@ class HomeScreen extends StatelessWidget {
                     Spacer(),
                     ClipOval(
                       child:
-                          (controller.user.photoURL == null)
+                          (controller.customer.photoURL == null)
                               ? SvgPicture.asset(
                                 'assets/images/def_user_image.svg',
                                 height: 45.h,
                                 width: 45.w,
                               )
                               : Image.network(
-                                controller.user.photoURL!,
+                                controller.customer.photoURL!,
                                 height: 45.h,
                                 width: 45.w,
                               ),

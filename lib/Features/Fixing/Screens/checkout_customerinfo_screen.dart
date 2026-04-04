@@ -3,9 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:go_router/go_router.dart';
+import 'package:luxury_golf_app/Features/Fixing/Controllers/repair_screen_controller.dart';
+import 'package:luxury_golf_app/Features/Fixing/Widgets/select_hour_drop_down.dart';
 import 'package:luxury_golf_app/Features/Location_Picker/flutter_map_picker_service.dart';
 import 'package:luxury_golf_app/core/Components/data_card.dart';
 import 'package:luxury_golf_app/Features/Fixing/Widgets/car_model_dropdown.dart';
+import 'package:luxury_golf_app/core/Enums/cars_models_enum.dart';
+import 'package:luxury_golf_app/core/Models/validations_config.dart';
 import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/small_slider_bar_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
@@ -14,48 +18,44 @@ import 'package:luxury_golf_app/core/routing/app_routs.dart';
 import 'package:luxury_golf_app/core/styles/app_colors.dart';
 import 'package:luxury_golf_app/core/styles/app_fonts.dart';
 import 'package:luxury_golf_app/core/styles/app_styles.dart';
+import 'package:provider/provider.dart';
 
-// ignore: must_be_immutable
 class CheckOutRepairCustomerInfo extends StatefulWidget {
-  CheckOutRepairCustomerInfo({super.key});
-  int selectedIndex = 0;
+  const CheckOutRepairCustomerInfo({super.key});
+
   @override
   State<CheckOutRepairCustomerInfo> createState() =>
       _CheckOutRepairCustomerInfoState();
 }
 
-final GlobalKey<FormState> _key = GlobalKey<FormState>();
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
 class _CheckOutRepairCustomerInfoState
     extends State<CheckOutRepairCustomerInfo> {
   String? selectedAddress;
+  CarsModelsEnum? selectedCarModel;
   DateTime? selectedDate;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: Text(
+          "Golf Cart Repair Request",
+          style: AppTextStyles.blue101w400s16.copyWith(
+            fontFamily: AppFonts.seconFont,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Form(
-          key: _key,
+          key: _formKey,
           child: Padding(
-            padding: EdgeInsetsGeometry.fromLTRB(11.w, 57.h, 7.w, 0),
+            padding: EdgeInsetsGeometry.fromLTRB(11.w, 0, 7.w, 0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                IconButton(
-                  onPressed: () {
-                    context.pop(context);
-                  },
-                  icon: Icon(Icons.arrow_back),
-                ),
-                Text(
-                  "Golf Cart Repair Request",
-                  style: AppTextStyles.blue101w400s16.copyWith(
-                    fontFamily: AppFonts.seconFont,
-                  ),
-                ),
-                const HightSpacing(hight: 8),
                 Text(
                   "Fill out the form below to request repair service for your golf cart.",
                   style: AppTextStyles.grey4A5w400s14,
@@ -89,9 +89,39 @@ class _CheckOutRepairCustomerInfoState
                       TextFieldWidget(
                         labelText: 'Phone number',
                         hintText: '+(20)0121234567',
+                        validationString: ValidationsConfig.phoneValidation(),
                       ),
                       HightSpacing(hight: 10),
-                      CarModelDropDown(labelText: 'Golf car model'),
+                      CarModelDropDown(
+                        labelText: 'Golf car model',
+                        onChanged: (CarsModelsEnum? value) {
+                          setState(() {
+                            selectedCarModel = value;
+                          });
+                        },
+                        hint:
+                            (selectedCarModel != null)
+                                ? Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(selectedCarModel?.modelName ?? ''),
+                                    Image.asset(
+                                      selectedCarModel?.modelLogoPath ??
+                                          'assets/images/other_model_image.png',
+                                      width: 50.w,
+                                      height: 15.h,
+                                    ),
+                                  ],
+                                )
+                                : Text(
+                                  'Select golf car mode',
+                                  style: AppTextStyles.grey4A5w400s14.copyWith(
+                                    color: Color(0xff9CA3AF),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                      ),
                       HightSpacing(hight: 10),
                       DataSelectionWidget(
                         labelText: 'Session Date',
@@ -126,7 +156,7 @@ class _CheckOutRepairCustomerInfoState
                         ),
                       ),
                       HightSpacing(hight: 10),
-                      CarModelDropDown(labelText: 'Session start hour'),
+                      SelectHourDropDown(labelText: 'Session start hour'),
                     ],
                   ),
                 ),
@@ -137,8 +167,21 @@ class _CheckOutRepairCustomerInfoState
                     buttomWidth: 310,
                     buttomhight: 44,
                     onPressed: () {
-                      if (_key.currentState?.validate() ?? false) {
-                        context.pushNamed(AppRouts.checkOutRepairDetails);
+                      if (_formKey.currentState?.validate() ?? false) {
+                        if (selectedCarModel == null) {
+                          showErrorMassage('Please Select Your Car Model');
+                        } else if (selectedDate == null) {
+                          showErrorMassage('Please Select Session Date');
+                        } else if (selectedAddress == null) {
+                          showErrorMassage('Please Select Your Location');
+                        }
+                        // TODO : Make one For Session Hour
+                        // else if (selectedAddress == null) {
+                        //   showErrorMassage('Please Select Your Location');
+                        // }
+                        else {
+                          context.pushNamed(AppRouts.checkOutRepairDetails);
+                        }
                       }
                     },
                   ),
@@ -152,35 +195,10 @@ class _CheckOutRepairCustomerInfoState
     );
   }
 
-  void _showDatePicker() async {
-    final pickedDate = await showDatePicker(
-      context: context,
-      firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(Duration(days: 7)),
-    );
-
-    if (pickedDate != null) {
-      setState(() {
-        selectedDate = pickedDate;
-      });
-    }
-  }
-
-
-  void _getLocation() async {
-    final mapService = FlutterMapPickerService();
-
-    final result = await mapService.pickLocation(context);
-
-    if (result != null) {
-      String? address = await getAddressFromLatLng(
-        result.latitude,
-        result.longitude,
-      );
-
-      print("Lat: ${result.latitude}, Lng: ${result.longitude}");
-      print("Address: $address");
-    }
+  void showErrorMassage(String errorMassage) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Center(child: Text(errorMassage))));
   }
 
   Future<String?> getAddressFromLatLng(double lat, double lng) async {
@@ -199,5 +217,35 @@ class _CheckOutRepairCustomerInfoState
       });
     }
     return selectedAddress;
+  }
+
+  void _showDatePicker() async {
+    final pickedDate = await showDatePicker(
+      context: context,
+      firstDate: DateTime.now(),
+      lastDate: DateTime.now().add(Duration(days: 7)),
+    );
+
+    if (pickedDate != null) {
+      setState(() {
+        selectedDate = pickedDate;
+      });
+    }
+  }
+
+  void _getLocation() async {
+    final mapService = FlutterMapPickerService();
+
+    final result = await mapService.pickLocation(context);
+
+    if (result != null) {
+      String? address = await getAddressFromLatLng(
+        result.latitude,
+        result.longitude,
+      );
+
+      print("Lat: ${result.latitude}, Lng: ${result.longitude}");
+      print("Address: $address");
+    }
   }
 }
