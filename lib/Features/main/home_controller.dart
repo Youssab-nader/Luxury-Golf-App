@@ -19,11 +19,12 @@ class HomeController extends ChangeNotifier {
     serviceHistory: [],
   );
 
-  void loadUserData() {
+  void loadUserData() async {
     final userDataString = PreferencesManager().getString(
       key: AppKeysConfig.userDataKey,
     );
     customer = CustomerModel.fromJson(jsonDecode(userDataString ?? ''));
+    await PreferencesManager().setString(key: AppKeysConfig.userNameKey, value: customer.name);
     notifyListeners();
   }
 }

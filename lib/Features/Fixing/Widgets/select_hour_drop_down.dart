@@ -23,7 +23,7 @@ class _SelectHourDropDownState extends State<SelectHourDropDown> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(widget.labelText, style: AppTextStyles.textLable),
+        Text(widget.labelText, style: AppTextStyles.textLabel),
         HightSpacing(hight: 5),
         DropdownButtonHideUnderline(
           child: DropdownButton2<CarsModelsEnum>(

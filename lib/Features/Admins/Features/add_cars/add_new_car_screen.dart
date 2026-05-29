@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +8,7 @@ import 'package:luxury_golf_app/Features/Image_Picker/image_picker_widget.dart';
 import 'package:luxury_golf_app/core/Components/screen_header_widget.dart';
 import 'package:luxury_golf_app/core/Models/car_model.dart';
 import 'package:luxury_golf_app/core/Enums/num_of_seats_enum.dart';
-import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
+import 'package:luxury_golf_app/core/Widgets/bottom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/text_field_widget.dart';
 import 'package:provider/provider.dart';
@@ -49,7 +48,7 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
     return ChangeNotifierProvider(
       create: (BuildContext context) => ImagePickerController(),
       builder: (context, child) {
-       return Scaffold(
+        return Scaffold(
           body: SafeArea(
             child: SingleChildScrollView(
               child: Form(
@@ -210,7 +209,7 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                                 ),
                                 Text(
                                   '  Seating Capacity',
-                                  style: AppTextStyles.textLable,
+                                  style: AppTextStyles.textLabel,
                                 ),
                               ],
                             ),
@@ -296,9 +295,9 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                       ),
                     ),
                     HightSpacing(hight: 16),
-                    ButtomWidget(
+                    BottomWidget(
                       text: 'Add Golf Cart to Fleet',
-                      buttomWidth: 320,
+                      bottomWidth: 320,
                       onPressed: () {
                         final controller =
                             context.read<ImagePickerController>();
@@ -353,28 +352,28 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                                           ),
                                     ),
                                     const HightSpacing(hight: 16),
-                                    ButtomWidget(
+                                    BottomWidget(
                                       text: 'Return to Main Page',
                                       onPressed:
                                           () => context.pushReplacementNamed(
                                             AppRouts.adminsHome,
                                           ),
 
-                                      buttomWidth: 311,
-                                      buttomhight: 44,
+                                      bottomWidth: 311,
+                                      bottomHight: 44,
                                     ),
                                     const HightSpacing(hight: 16),
-                                    ButtomWidget(
+                                    BottomWidget(
                                       text: 'Add another car',
                                       onPressed:
                                           () => context.pushReplacementNamed(
                                             AppRouts.addNewCar,
                                           ),
 
-                                      buttomWidth: 311,
-                                      buttomhight: 44,
+                                      bottomWidth: 311,
+                                      bottomHight: 44,
                                       backgroundColor: AppColors.white,
-                                      forgroundColor: AppColors.black,
+                                      foregroundColor: AppColors.black,
                                     ),
                                   ],
                                 ),
@@ -383,7 +382,7 @@ class _AddNewCarScreenState extends State<AddNewCarScreen> {
                           );
                         }
                       },
-                      buttomhight: 52,
+                      bottomHight: 52,
                       backgroundColor: AppColors.green34C,
                       r: 14,
                     ),

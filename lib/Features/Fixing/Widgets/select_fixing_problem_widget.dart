@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:luxury_golf_app/Features/Fixing/Controllers/repair_screen_controller.dart';
+import 'package:luxury_golf_app/Features/Fixing/Controllers/fix_service_controller.dart';
 import 'package:luxury_golf_app/Features/Fixing/Widgets/fix_section_card.dart';
 import 'package:provider/provider.dart';
 
@@ -8,10 +8,10 @@ class SelectExpProblemsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<SelectExpProblemsController>(
+    return Consumer<FixServiceController>(
       builder: (
         BuildContext context,
-        SelectExpProblemsController controller,
+        FixServiceController controller,
         Widget? child,
       ) {
         return GridView.builder(

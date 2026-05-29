@@ -24,7 +24,7 @@ class CarModelDropDown extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(labelText, style: AppTextStyles.textLable),
+        Text(labelText, style: AppTextStyles.textLabel),
         HightSpacing(hight: 5),
         DropdownButtonHideUnderline(
           child: DropdownButton2<CarsModelsEnum>(

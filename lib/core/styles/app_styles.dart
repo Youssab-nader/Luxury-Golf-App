@@ -40,7 +40,7 @@ class AppTextStyles {
     fontSize: 10.sp,
   );
 
-  static TextStyle buttomTextStyle = TextStyle(
+  static TextStyle bottomTextStyle = TextStyle(
     fontFamily: AppFonts.mainFont,
     fontWeight: FontWeight.w600,
     fontSize: 16.sp,
@@ -64,7 +64,7 @@ class AppTextStyles {
     fontSize: 16.sp,
   );
 
-  static TextStyle subgreyText = TextStyle(
+  static TextStyle subGreyText = TextStyle(
     color: AppColors.grey565,
     fontWeight: FontWeight.w400,
     fontSize: 14.sp,
@@ -94,7 +94,7 @@ class AppTextStyles {
     fontSize: 11.sp,
   );
 
-  static TextStyle textLable = TextStyle(
+  static TextStyle textLabel = TextStyle(
     color: AppColors.grey364,
     fontWeight: FontWeight.w600,
     fontSize: 14.sp,

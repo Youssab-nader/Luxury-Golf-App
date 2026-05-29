@@ -3,14 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:go_router/go_router.dart';
-import 'package:luxury_golf_app/Features/Fixing/Controllers/repair_screen_controller.dart';
+import 'package:luxury_golf_app/Features/Fixing/Controllers/fix_service_controller.dart';
 import 'package:luxury_golf_app/Features/Fixing/Widgets/select_hour_drop_down.dart';
 import 'package:luxury_golf_app/Features/Location_Picker/flutter_map_picker_service.dart';
 import 'package:luxury_golf_app/core/Components/data_card.dart';
 import 'package:luxury_golf_app/Features/Fixing/Widgets/car_model_dropdown.dart';
+import 'package:luxury_golf_app/core/Config/app_keys_config.dart';
+import 'package:luxury_golf_app/core/Data/Local_data/local_storage_service.dart';
 import 'package:luxury_golf_app/core/Enums/cars_models_enum.dart';
 import 'package:luxury_golf_app/core/Models/validations_config.dart';
-import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
+import 'package:luxury_golf_app/core/Widgets/bottom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/small_slider_bar_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/text_field_widget.dart';
@@ -32,9 +34,17 @@ final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
 class _CheckOutRepairCustomerInfoState
     extends State<CheckOutRepairCustomerInfo> {
+  final TextEditingController _phoneNumController = TextEditingController();
+
   String? selectedAddress;
   CarsModelsEnum? selectedCarModel;
   DateTime? selectedDate;
+
+  @override
+  void dispose() {
+    _phoneNumController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +53,7 @@ class _CheckOutRepairCustomerInfoState
         title: Text(
           "Golf Cart Repair Request",
           style: AppTextStyles.blue101w400s16.copyWith(
-            fontFamily: AppFonts.seconFont,
+            fontFamily: AppFonts.secondFont,
           ),
         ),
       ),
@@ -89,6 +99,7 @@ class _CheckOutRepairCustomerInfoState
                       TextFieldWidget(
                         labelText: 'Phone number',
                         hintText: '+(20)0121234567',
+                        textController: _phoneNumController,
                         validationString: ValidationsConfig.phoneValidation(),
                       ),
                       HightSpacing(hight: 10),
@@ -162,11 +173,11 @@ class _CheckOutRepairCustomerInfoState
                 ),
                 const HightSpacing(hight: 18),
                 Center(
-                  child: ButtomWidget(
+                  child: BottomWidget(
                     text: 'Continue',
-                    buttomWidth: 310,
-                    buttomhight: 44,
-                    onPressed: () {
+                    bottomWidth: 310,
+                    bottomHight: 44,
+                    onPressed: () async {
                       if (_formKey.currentState?.validate() ?? false) {
                         if (selectedCarModel == null) {
                           showErrorMassage('Please Select Your Car Model');
@@ -180,6 +191,22 @@ class _CheckOutRepairCustomerInfoState
                         //   showErrorMassage('Please Select Your Location');
                         // }
                         else {
+                          context.read<FixServiceController>().setCustomerInfo(
+                            name:
+                                PreferencesManager().getString(
+                                  key: AppKeysConfig.userNameKey,
+                                ) ??
+                                'Null',
+                            phone: _phoneNumController.text,
+                            model: selectedCarModel!.modelName,
+                            date:
+                                selectedDate!
+                                    .toIso8601String()
+                                    .split('T')
+                                    .first,
+                            location: selectedAddress!,
+                          );
+
                           context.pushNamed(AppRouts.checkOutRepairDetails);
                         }
                       }
@@ -203,9 +230,9 @@ class _CheckOutRepairCustomerInfoState
 
   Future<String?> getAddressFromLatLng(double lat, double lng) async {
     try {
-      List<Placemark> placemarks = await placemarkFromCoordinates(lat, lng);
+      List<Placemark> placeMarks = await placemarkFromCoordinates(lat, lng);
 
-      Placemark place = placemarks.first;
+      Placemark place = placeMarks.first;
 
       setState(() {
         selectedAddress =

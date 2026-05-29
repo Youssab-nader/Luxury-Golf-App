@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:luxury_golf_app/Features/Fixing/Controllers/repair_screen_controller.dart';
+import 'package:luxury_golf_app/Features/Fixing/Controllers/fix_service_controller.dart';
 import 'package:luxury_golf_app/core/Enums/fixing_section_enum.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/styles/app_colors.dart';
@@ -19,13 +19,13 @@ class FixSectionCard extends StatefulWidget {
 class _FixSectionCardState extends State<FixSectionCard> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<SelectExpProblemsController>(
+    return Consumer<FixServiceController>(
       builder: (
         BuildContext context,
-        SelectExpProblemsController controller,
+        FixServiceController controller,
         Widget? child,
       ) {
-        bool isTaped = controller.expectedProblems.contains(widget.problem);
+        bool isTaped = controller.request.expProblems!.contains(widget.problem);
         return InkWell(
           child: Container(
             padding: EdgeInsets.all(14.r),
@@ -65,7 +65,7 @@ class _FixSectionCardState extends State<FixSectionCard> {
             } else {
               controller.addProblem(widget.problem);
             }
-            print('The Problems List => ${controller.expectedProblems}');
+            print('The Problems List => ${controller.request.expProblems}');
           },
         );
       },

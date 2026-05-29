@@ -18,7 +18,8 @@ class ServiceCategoryCard extends StatelessWidget {
     required this.mainText,
     required this.subText,
     required this.svgIconPath,
-    required this.cardWidth, required this.onTap,
+    required this.cardWidth,
+    required this.onTap,
   });
 
   @override
@@ -38,7 +39,7 @@ class ServiceCategoryCard extends StatelessWidget {
             LableIcon(gradientColor: gradientColor, svgIconPath: svgIconPath),
             const HightSpacing(hight: 11.2),
             Text(mainText, style: AppTextStyles.blue044w400s16),
-            Text(subText, style: AppTextStyles.subgreyText),
+            Text(subText, style: AppTextStyles.subGreyText),
           ],
         ),
       ),

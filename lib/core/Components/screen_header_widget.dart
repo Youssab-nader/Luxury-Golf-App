@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
-import 'package:luxury_golf_app/core/styles/app_colors.dart';
 import 'package:luxury_golf_app/core/styles/app_styles.dart';
 
 class ScreenHeaderWidget extends StatelessWidget {

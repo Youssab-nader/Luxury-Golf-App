@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:luxury_golf_app/Features/main/navigation_bar_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/arrow_back_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/service_categories_card.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';

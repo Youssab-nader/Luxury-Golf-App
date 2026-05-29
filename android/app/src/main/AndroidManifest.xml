@@ -2,9 +2,12 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <application
-        android:label="luxury_golf_app"
+        android:label="luxury_golf_egypt"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+    android:name="com.google.android.geo.API_KEY"
+    android:value="AIzaSyA8OfoBRHY9IG-2FOjswfAl2JwGQTvD2eQ"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

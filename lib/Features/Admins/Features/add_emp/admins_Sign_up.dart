@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:luxury_golf_app/core/Models/permissions_model.dart';
 import 'package:luxury_golf_app/core/Components/screen_header_widget.dart';
 import 'package:luxury_golf_app/core/Models/validations_config.dart';
-import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
+import 'package:luxury_golf_app/core/Widgets/bottom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/clickable_card.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/text_field_widget.dart';
@@ -12,7 +12,7 @@ import 'package:luxury_golf_app/core/styles/app_colors.dart';
 
 class AddNewEmpScreen extends StatefulWidget {
   const AddNewEmpScreen({super.key});
-  // TODO : Make Validation With Regular Exeprision
+  // TODO : Make Validation With Regular Expedition
   @override
   State<AddNewEmpScreen> createState() => _AddNewEmpScreenState();
 }
@@ -463,11 +463,11 @@ class _AddNewEmpScreenState extends State<AddNewEmpScreen> {
                   ),
                 ),
                 const HightSpacing(hight: 16),
-                ButtomWidget(
+                BottomWidget(
                   text: 'Create Employee Account',
                   r: 14,
-                  buttomhight: 52.h,
-                  buttomWidth: 312,
+                  bottomHight: 52.h,
+                  bottomWidth: 312,
                   backgroundColor: AppColors.blue615,
                   onPressed: () async {
                     if ((_empFormKey.currentState?.validate() ?? false) &&

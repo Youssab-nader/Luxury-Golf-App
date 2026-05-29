@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:luxury_golf_app/core/Components/screen_header_widget.dart';
-import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
+import 'package:luxury_golf_app/core/Widgets/bottom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/routing/app_routs.dart';
 import 'package:luxury_golf_app/core/styles/app_colors.dart';
@@ -44,15 +44,15 @@ class _SeeAccountsScreenState extends State<SeeAccountsScreen> {
                   ),
                 ),
                 HightSpacing(hight: 12),
-                ButtomWidget(
+                BottomWidget(
                   text: 'Add New Employee',
-                  buttomWidth: 327,
+                  bottomHight: 48,
+                  bottomWidth: 327,
                   svgIconPath: 'assets/icons/add_emp_white.svg',
                   backgroundColor: AppColors.blue4F3,
                   onPressed: () {
                     context.pushNamed(AppRouts.addNewEmp);
                   },
-                  buttomhight: 48,
                 ),
               ],
             ),

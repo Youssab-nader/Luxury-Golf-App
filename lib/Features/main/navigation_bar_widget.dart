@@ -16,7 +16,6 @@ class MainScreens extends StatefulWidget {
 
 class _MainScreensState extends State<MainScreens> {
   int _currentIndex = 0;
-
   final List<Widget> _screens = [HomeScreen(), InboxScreen(), ProfileScreen()];
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,14 @@
+- Auth
+	- TODO POST signup user  Missing Name field
+	- GET signup user what's do ?
+	- TODO POST signup employee Missing EMP-id field
+	-
+-
+- User
+	- TODO  GET user page Missing last service field
+	-
+-
 - Fixing Service
-	- Repair Details not founded in Fix Details Response
-	- Section Date not founded in Request Fix Carj
+	- TODO Repair Details not founded in Fix Details Response
+	- TODO Section Date not founded in Request Fix Car
+-

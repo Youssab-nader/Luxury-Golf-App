@@ -11,7 +11,10 @@ enum ServStatus {
 }
 
 enum RequestStatus {
-  approved,
-  pinding,
-  rejected,
+  approved (statusName: 'Approved'),
+  pinding (statusName: 'Pinding'),
+  rejected (statusName: 'Rejected');
+  final String statusName;
+
+  const RequestStatus({required this.statusName});
 }

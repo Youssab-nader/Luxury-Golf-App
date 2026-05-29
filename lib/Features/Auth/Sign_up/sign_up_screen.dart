@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:luxury_golf_app/core/Models/customer_model.dart';
-import 'package:luxury_golf_app/core/Models/user_model.dart';
 import 'package:luxury_golf_app/core/Models/validations_config.dart';
-import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
+import 'package:luxury_golf_app/core/Widgets/bottom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/text_field_widget.dart';
 import 'package:luxury_golf_app/core/routing/app_routs.dart';
 import 'package:luxury_golf_app/core/styles/app_colors.dart';
 import 'package:luxury_golf_app/core/styles/app_styles.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -127,23 +124,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
 
                         HightSpacing(hight: 30),
-                        ButtomWidget(
+                        BottomWidget(
                           text: 'Sign Up',
-                          buttomWidth: 343.w,
+                          bottomWidth: 343.w,
+                          bottomHight: 48.h,
                           onPressed: () async {
                             if (_formKey.currentState?.validate() ?? false) {
-                              final CustomerModel newCustomer = CustomerModel(
-                                name: _nameController.text,
-                                email: _emailController.text,
-                                phoneNumber: _phoneNumController.text,
-                                photoURL: null,
-                                passWord: _passwordController.text,
-                                isLogined: true,
-                                serviceHistory: [], 
-                              );
+                              
                             }
                           },
-                          buttomhight: 48.h,
                           backgroundColor: Color(0xff3257D1),
                           r: 12,
                         ),

@@ -1,16 +1,16 @@
 enum FixingProblemsEnum {
   battery(
     problemName: 'Battery',
-    problemIconPath: 'assets/icons/battary_icon.svg',
+    problemIconPath: 'assets/icons/battery_icon.svg',
   ),
 
-  charer(
+  charger(
     problemName: 'Charger',
     problemIconPath: 'assets/icons/charger_icon.svg',
   ),
 
   tires(
-    problemName: 'Tires &\nBrakes',
+    problemName: 'Tires & Brakes',
     problemIconPath: 'assets/icons/tire_icon.svg',
   ),
 
@@ -20,18 +20,18 @@ enum FixingProblemsEnum {
   ),
 
   lights(
-    problemName: 'Lights &\nSignals',
+    problemName: 'Lights & Signals',
     problemIconPath: 'assets/icons/light_icon.svg',
   ),
 
   body(
-    problemName: 'Body &\nFrame',
+    problemName: 'Body & Frame',
     problemIconPath: 'assets/icons/body_icon.svg',
   ),
 
   seats(
-    problemName: 'Seats &\nUpholstery',
-    problemIconPath: 'assets/icons/seates_icon.svg',
+    problemName: 'Seats & Upholstery',
+    problemIconPath: 'assets/icons/seats_icon.svg',
   ),
 
   other(problemName: 'Other', problemIconPath: 'assets/icons/anOther_icon.svg');

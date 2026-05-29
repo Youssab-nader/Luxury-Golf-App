@@ -47,7 +47,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             (widget.labelIconPath != null)
                 ? SvgPicture.asset(widget.labelIconPath!)
                 : SizedBox(),
-            Text(widget.labelText, style: AppTextStyles.textLable),
+            Text(widget.labelText, style: AppTextStyles.textLabel),
             Text(
               widget.starIcon ?? '',
               style: TextStyle(color: Colors.red, fontSize: 15.sp),

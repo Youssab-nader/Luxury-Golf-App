@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:luxury_golf_app/Features/Auth/Sign_in/google_sign_in.dart';
 import 'package:luxury_golf_app/core/Config/app_keys_config.dart';
 import 'package:luxury_golf_app/core/Data/Local_data/local_storage_service.dart';
-import 'package:luxury_golf_app/core/Widgets/buttom_widget.dart';
+import 'package:luxury_golf_app/core/Widgets/bottom_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/spacing_widget.dart';
 import 'package:luxury_golf_app/core/Widgets/text_field_widget.dart';
 import 'package:luxury_golf_app/core/routing/app_routs.dart';
@@ -88,11 +88,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     HightSpacing(hight: 30),
-                    ButtomWidget(
+                    BottomWidget(
                       text: 'Login',
-                      buttomWidth: 343.w,
+                      bottomWidth: 343.w,
+                      bottomHight: 48.h,
                       onPressed: () {},
-                      buttomhight: 48.h,
                       backgroundColor: Color(0xff3257D1),
                       r: 12,
                     ),
@@ -120,9 +120,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     HightSpacing(hight: 20),
-                    ButtomWidget(
+                    BottomWidget(
                       text: 'Continue with Google ',
-                      buttomWidth: 343.w,
+                      bottomWidth: 343.w,
+                      bottomHight: 48.h,
                       onPressed: () async {
                         if (PreferencesManager().getString(
                               key: AppKeysConfig.userDataKey,
@@ -133,11 +134,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           await _googleLogin()
                               ? context.goNamed(AppRouts.main)
                               : ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Login Faild')),
+                                SnackBar(content: Text('Login Failed')),
                               );
                         }
                       },
-                      buttomhight: 48.h,
                       svgIconPath: 'assets/icons/google_icon.svg',
                       backgroundColor: Color(0xff094D67),
                     ),

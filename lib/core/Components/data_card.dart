@@ -21,7 +21,7 @@ class DataSelectionWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(labelText, style: AppTextStyles.textLable),
+        Text(labelText, style: AppTextStyles.textLabel),
         HightSpacing(hight: 5),
         Container(
           height: 48.h,
