@@ -78,7 +78,13 @@ class _FlutterMapPickerScreenState extends State<FlutterMapPickerScreen> {
     LocationPermission permission;
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) return;
+
+    if (!serviceEnabled) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please enable location service")),
+      );
+      return;
+    }
 
     permission = await Geolocator.checkPermission();
 
@@ -89,7 +95,7 @@ class _FlutterMapPickerScreenState extends State<FlutterMapPickerScreen> {
 
     if (permission == LocationPermission.deniedForever) return;
 
-    Position position = await Geolocator.getCurrentPosition();
+    final position = await Geolocator.getCurrentPosition();
 
     LatLng current = LatLng(position.latitude, position.longitude);
 

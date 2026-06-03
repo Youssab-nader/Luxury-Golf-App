@@ -1,0 +1,18 @@
+- UI
+	- TODO Home Page UI (Circular Avatar  , Nav Bar)
+	- TODO To Do Screen
+	- TODO Complete Screen
+	- TODO Profile Screen
+	- TODO Dark & Light Them
+	- TODO Edit Task UI
+	-
+- Local Storage
+	- TODO Enhance Using Shared Pref
+	- TODO Store & Call Tasks
+	- TODO Store & Call Profile Data
+-
+- State Management
+	- TODO Use Provider as State Management
+	- TODO Rebuild when add Or Remove Task
+	-
+	-

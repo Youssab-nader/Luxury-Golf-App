@@ -10,7 +10,6 @@ class SigninWithGoogle {
   Future<bool> signIn() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-
       if (googleUser == null) return false;
       final CustomerModel newCustomer = CustomerModel(
         name: googleUser.displayName ?? '',
@@ -28,7 +27,6 @@ class SigninWithGoogle {
         key: AppKeysConfig.userDataKey,
         value: custStringData,
       );
-
       return true;
     } catch (e) {
       return false;

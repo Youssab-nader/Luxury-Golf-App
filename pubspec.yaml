@@ -49,6 +49,7 @@ dependencies:
   geolocator: ^14.0.2
   geocoding: ^4.0.0
   google_maps_flutter: ^2.17.0
+  flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
   flutter_test:
@@ -104,3 +105,8 @@ flutter_native_splash:
   android_12:
     color: "#FFFFFF"
     icon_background_color: "#FFFFFF"
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/Logo.png"
