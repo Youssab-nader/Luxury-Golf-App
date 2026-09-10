@@ -19,7 +19,7 @@ class _RentScreen extends State<RentScreen> {
       mainText: 'Rent Service',
       subText: 'Let’s find your next ride',
       mainIconColor: AppColors.green0049,
-      navScreenName: AppRouts.adminsHome,
+      navScreenName: AppRouts.rentingDateScreen,
     );
   }
 }

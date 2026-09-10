@@ -15,4 +15,5 @@ class AppRouts {
   static const String fixPindingServices = 'fixPindingServices';
   static const String fixHistory = 'fixHistory';
   static const String rent = '/rent';
+  static const String rentingDateScreen = '/rentingdate';
 }

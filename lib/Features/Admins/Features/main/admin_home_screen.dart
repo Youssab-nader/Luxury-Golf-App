@@ -105,7 +105,7 @@ class AdminsHomeScreen extends StatelessWidget {
                         ClickableCardWidget(
                           mainText: 'Reports',
                           subTex: 'Fleet & financial reports',
-                          svgPath: 'assets/icons/repots_icon.svg',
+                          svgPath: 'assets/icons/reports_icon.svg',
                           bordersColor: AppColors.greenB9F,
                           containerColor: AppColors.greenB9F,
                           iconColor: AppColors.green00A,

@@ -48,8 +48,8 @@ class AppTextStyles {
 
   static TextStyle headLineText = TextStyle(
     color: AppColors.blue044,
-    fontWeight: FontWeight.w800,
-    fontSize: 24.sp,
+    fontWeight: FontWeight.w900,
+    fontSize: 20.sp,
   );
 
   static TextStyle getStartedTex = TextStyle(

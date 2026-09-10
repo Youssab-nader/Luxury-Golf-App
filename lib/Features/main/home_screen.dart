@@ -43,11 +43,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     Text(
                       controller.customer.getFirstName(),
-                      style: AppTextStyles.grey585w500s10.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.blue044,
-                        fontSize: 17.sp,
-                      ),
+                      style: AppTextStyles.headLineText,
                     ),
                     Spacer(),
                     ClipOval(
@@ -68,17 +64,19 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               HightSpacing(hight: 24),
-              Text('Home', style: AppTextStyles.headLineText),
-              HightSpacing(hight: 16),
+
               ServiceCardWidget(
                 onTap: () {
-                  context.pushNamed(AppRouts.adminsHome);
+                  context.pushNamed(AppRouts.rent);
                 },
                 imagePath: 'assets/images/rent_service_card.png',
                 serviceName: 'Rent',
                 svgIconPath: 'assets/icons/golf_car_icon.svg',
+                buttomnColor: AppColors.blue29A,
+                buttomnWidth: 87.w,
+                buttomnTitle: 'Explore',
               ),
-              HightSpacing(hight: 69),
+              HightSpacing(hight: 32),
               ServiceCardWidget(
                 onTap: () {
                   context.pushNamed(AppRouts.fix);
@@ -86,6 +84,9 @@ class HomeScreen extends StatelessWidget {
                 imagePath: 'assets/images/fix_man.jpg',
                 serviceName: 'Fix',
                 svgIconPath: 'assets/icons/fix_icon.svg',
+                buttomnColor: AppColors.blue002,
+                buttomnWidth: 123.w,
+                buttomnTitle: 'Book service',
               ),
               HightSpacing(hight: 5),
             ],

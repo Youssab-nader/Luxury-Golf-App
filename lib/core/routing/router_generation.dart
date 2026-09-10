@@ -12,6 +12,7 @@ import 'package:luxury_golf_app/Features/Fixing/Screens/fix_history_service_scre
 import 'package:luxury_golf_app/Features/Fixing/Screens/fix_pinding_service_screen.dart';
 import 'package:luxury_golf_app/Features/Fixing/Screens/fix_home_screen.dart';
 import 'package:luxury_golf_app/Features/Rent/Screens/rent_home_screen.dart';
+import 'package:luxury_golf_app/Features/Rent/Screens/renting_date_screen.dart';
 import 'package:luxury_golf_app/Features/main/get_started_screen.dart';
 import 'package:luxury_golf_app/Features/Auth/Sign_in/login_screen.dart';
 import 'package:luxury_golf_app/Features/Auth/Sign_up/sign_up_screen.dart';
@@ -69,6 +70,11 @@ class RouterGeneration {
         path: AppRouts.rent,
         builder: (context, state) => RentScreen(),
       ),
+      GoRoute(
+        name: AppRouts.rentingDateScreen,
+        path: AppRouts.rentingDateScreen,
+        builder: (context, state) => DateOfRentingScreen(),
+      ),
 
       GoRoute(
         name: AppRouts.seeEmpAccounts,
@@ -111,7 +117,7 @@ class RouterGeneration {
 
               GoRoute(
                 name: AppRouts.fixPindingServices,
-                path: '${AppRouts.fix}/${AppRouts. fixPindingServices}',
+                path: '${AppRouts.fix}/${AppRouts.fixPindingServices}',
                 builder: (context, state) => FixPindingServices(),
               ),
 
@@ -133,3 +139,5 @@ class RouterGeneration {
     ],
   );
 }
+
+class RentingDateScreen {}
